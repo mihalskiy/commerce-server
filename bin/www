@@ -1,17 +1,17 @@
-const https = require('https');
-var fs  = require('fs');
+const http = require('https');
+const fs  = require('fs');
 const app = require('../server'); // The express app we just created
 
 console.log('__dirname', '../ssl-key.pem')
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
-var https_options = {
+/*const https_options = {
   key: fs.readFileSync(__dirname +'/../ssl-key.pem'),
   cert: fs.readFileSync(__dirname +'/../ssl-cert.pem')
 };
-
-const server = https.createServer(https_options, app);
+*/
+const server = https.createServer(app);
 server.listen(port, () => {
   console.log(`The server is running at localhost:${port}` + app.get('port'));
 });
