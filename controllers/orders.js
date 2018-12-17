@@ -4,7 +4,7 @@ const senderMail = require('../mail/mail.service').mail;
 
 module.exports = {
   create(req, res) {
-      //senderMail(req.body.email, req.body.message);
+      senderMail(req.body.email, req.body.message);
       console.log('req', req)
       return Order
       .create({

@@ -1,10 +1,22 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-
+const path = require('path')
+const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('passport')
+const db = require('./config/config').development;
+const SessionStore = require('express-session-sequelize')(session.Store);
+const Sequelize = require('sequelize');
+const User = require('./models').User;
+const myDatabase = new Sequelize(db.database, db.username, db.password, {
+    host: db.host,
+    dialect: db.dialect,
+});
+const sequelizeSessionStore = new SessionStore({
+    db: myDatabase,
+});
 const app = express();
-app.use(logger('dev'));
-app.use(bodyParser.json());
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL);
     res.header("Access-Control-Allow-Credentials", "true");
@@ -12,9 +24,33 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
 });
+
+
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+
+passport.serializeUser((user, done) => done(null, user.id))
+passport.deserializeUser((id, done) =>
+    User.findById(id, {attributes: ['id', 'email']})
+        .then(user => {
+            done(null, user)
+            return null
+        })
+        .catch(done))
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(session({
+    secret: 'keyboard cat',
+    store: sequelizeSessionStore,
+    resave: false, // we support the touch method so per the express-session docs this should be set to false
+    proxy: true // if you do SSL outside of node.
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
+require('./auth/auth')(app);
 require('./routes/router')(app);
+
 app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
 }));

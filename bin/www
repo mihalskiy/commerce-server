@@ -2,7 +2,6 @@ const http = require('http');
 const fs  = require('fs');
 const app = require('../server'); // The express app we just created
 
-console.log('__dirname', '../ssl-key.pem')
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
