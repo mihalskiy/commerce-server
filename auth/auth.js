@@ -45,8 +45,10 @@ module.exports = (app) => {
         res.json(req.user)
     })
 
+
+    require('./facebook')(app, User)
     /*router.use('/google', require('./google'))
-    router.use('/twitter', require('./twitter'))
+
     router.use('/facebook', require('./facebook'))*/
 
 }
