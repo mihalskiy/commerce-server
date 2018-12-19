@@ -1,15 +1,24 @@
 const User = require('../models').User;
 
 module.exports = (app) => {
+
     app.post('/login', (req, res, next) => {
-        // User.findOne({where: {email: req.body.email}}, {attributes: ['id', 'email', 'name', 'isAdmin', 'tags']})
-        return User.findOne({where: {email: req.body.email}})
+        const {
+            email,
+            password,
+        } = req.body;
+
+        if (!email || !password) {
+            res
+            .status(400)
+            .send('Fields [email, password] are required');
+        }
+
+        return User.findOne({where: {email: email, password: password}})
             .then(user => {
                 if (!user) {
                     res.status(401).send('User not found')
-                } /*else if (!user.correctPassword(req.body.email)) {
-                    //res.status(401).send('Incorrect password')
-                }*/ else {
+                } else {
                     req.login(user, err => err ? next(err) : res.json(user))
                 }
             })
