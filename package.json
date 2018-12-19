@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "node-telephone-user-search \n If you dont have install node-js, please go this link [https://nodejs.org](https://nodejs.org)",
   "main": "server.js",
+  "proxy": "http://localhost:8080",
   "config": {
     "engine": "getcontact",
     "dockerHostUrl": "197229461665.dkr.ecr.us-east-2.amazonaws.com"
@@ -11,8 +12,9 @@
     "//prestart": "npm run validateSwagger && npm run fix",
     "//db:create": "node_modules/.bin/create_database",
     "//db:drop": "node_modules/.bin/drop_database",
-    "start": "NODE_ENV='development' nodemon ./bin/www -w server -e html,js,scss --ignore build",
-    "start-client": "react-scripts build ENTRY=./client/index.js",
+    "start": "npm run server & npm run client",
+    "server": "NODE_ENV='development' nodemon ./bin/www -w server -e html,js,scss --ignore build",
+    "client": "set PORT=8008 && serve -s build",
     "start:dev": "./node_modules/.bin/nodemon ./bin/www -w app.js -w server",
     "validateSwagger": "swagger-tools validate ./server/middleware/swagger/swaggerDocs.yaml",
     "fix": "eslint --fix .",
