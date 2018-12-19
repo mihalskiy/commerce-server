@@ -1,12 +1,13 @@
-const express = require('express')
-const morgan = require('morgan')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const passport = require('passport')
-const db = require('./config/config').development;
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
+const db = require('./server/config/config').development;
 const SessionStore = require('express-session-sequelize')(session.Store);
 const Sequelize = require('sequelize');
-const User = require('./models').User;
+const User = require('./server/models').User;
 const myDatabase = new Sequelize(db.database, db.username, db.password, {
     host: db.host,
     dialect: db.dialect,
@@ -47,11 +48,16 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-require('./auth/auth')(app);
-require('./routes/router')(app);
+require('./server/auth/auth')(app);
+require('./server/routes/router')(app);
+app.use(express.static(path.join(__dirname + '/build')))
 
-app.get('*', (req, res) => res.status(200).send({
+// sends index.html
+app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/build/index.html'))
+})
+/*app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
-}));
+}));*/
 
 module.exports = app;
