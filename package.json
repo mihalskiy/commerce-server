@@ -14,7 +14,7 @@
     "//db:drop": "node_modules/.bin/drop_database",
     "start": "npm run server & npm run client",
     "server": "NODE_ENV='development' nodemon ./bin/www -w server -e html,js,scss --ignore build",
-    "client": "set PORT=8008 && serve -s build",
+    "client": "react-scripts build",
     "start:dev": "./node_modules/.bin/nodemon ./bin/www -w app.js -w server",
     "validateSwagger": "swagger-tools validate ./server/middleware/swagger/swaggerDocs.yaml",
     "fix": "eslint --fix .",
