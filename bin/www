@@ -2,7 +2,7 @@ const https = require('https');
 const fs  = require('fs');
 const app = require('../server'); // The express app we just created
 
-const port = parseInt(process.env.PORT, 10) || 8079;
+const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
 const https_options = {

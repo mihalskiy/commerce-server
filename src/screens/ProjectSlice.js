@@ -46,7 +46,7 @@ const ProjectSlice = ({ status }) => (
   <React.Fragment>
     <ScrollToTop status={status} />
     <Helmet>
-      <title>{`Projects | ${title}`}</title>
+      <title>{`Создания веб сайтов | ${title}`}</title>
       <meta name="description" content={description} />
     </Helmet>
     <ProjectContainer>

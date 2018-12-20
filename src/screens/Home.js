@@ -171,7 +171,7 @@ export default class Home extends Component {
           title="ПРИМЕРЫ НАШИХ РАБОТ"
           description="За время своей работы мы разработали более 600 лендингов работающих во всех странах мира и генерирующих своим заказчикам тысячи обращений в сутки. Большинство клиентов заказали у нас по несколько лендингов на каждое направление своего бизнеса"
           buttonText="Посмотреть все роботы"
-          buttonTo="/projects/portfolio"
+          buttonTo="/portfolio"
           imageSrc={[`${sprProject} 980w, ${sprProjectLarge} 1376w`]}
           imageAlt={['Smart Sparrow lesson builder']}
           imagePlaceholder={[sprProjectPlaceholder]}
@@ -185,7 +185,7 @@ export default class Home extends Component {
           title="СКОЛЬКО СТОИТ?"
           description="Наши цены вас приятно удивят, оплата поэтапная любым удобным способом"
           buttonText="Посмотреть росценки"
-          buttonLink="/projects/price"
+          buttonLink="/price"
           imageSrc={[
             `${gamestackLogin} 254w, ${gamestackLoginLarge} 508w`,
             `${gamestackList} 254w, ${gamestackListLarge} 508w`,
@@ -208,7 +208,7 @@ export default class Home extends Component {
           title="Блог"
           description="Выбор технологий для большого и не очень большого веб-проекта"
           buttonText="Перейти к блогу"
-          buttonTo="/projects/slice"
+          buttonTo="/slice"
           imageSrc={[`${sliceProject} 980w, ${sliceProjectLarge} 1376w`]}
           imageAlt={['Annotating a biomedical image in the Slice app']}
           imagePlaceholder={[sliceProjectPlaceholder]}

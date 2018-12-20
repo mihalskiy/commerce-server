@@ -62,7 +62,7 @@ let ProjectPortfolio = ({ status, table = {} }) => (
     <React.Fragment>
         <ScrollToTop status={status} />
         <Helmet>
-            <title>{`Projects | ${title}`}</title>
+            <title>{`Создания веб сайтов | ${title}`}</title>
             <meta name="description" content={description} />
         </Helmet>
         <ProjectContainer>
@@ -74,7 +74,7 @@ let ProjectPortfolio = ({ status, table = {} }) => (
             <NavPortfolio
                 title={title}
                 description={description}
-                url="/projects/contact"
+                url="/contact"
                 src={backgroundSprPlaceholder}
             />
             <ProjectSection>

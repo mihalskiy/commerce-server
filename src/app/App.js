@@ -130,10 +130,10 @@ class App extends Component {
                                                                                 </Helmet>
                                                                                 <Switch location={location}>
                                                                                     <Route exact path="/" render={props => <Home {...props} status={status} />} />
-                                                                                    <Route path="/projects/contact" render={props => <Contact {...props} status={status} />} />
-                                                                                    <Route path="/projects/price" render={props => <ProjectSPR {...props} status={status} />} />
-                                                                                    <Route path="/projects/portfolio" render={props => <ProjectPortfolio {...props} status={status} />} />
-                                                                                    <Route path="/projects/slice" render={props => <ProjectSlice {...props} status={status} />} />
+                                                                                    <Route path="/contact" render={props => <Contact {...props} status={status} />} />
+                                                                                    <Route path="/price" render={props => <ProjectSPR {...props} status={status} />} />
+                                                                                    <Route path="/portfolio" render={props => <ProjectPortfolio {...props} status={status} />} />
+                                                                                    <Route path="/slice" render={props => <ProjectSlice {...props} status={status} />} />
                                                                                     <Route render={props => <NotFound {...props} status={status} />} />
                                                                                 </Switch>
                                                                             </MainContent>

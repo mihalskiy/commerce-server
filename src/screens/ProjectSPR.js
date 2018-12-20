@@ -33,7 +33,7 @@ class ProjectSPR extends Component {
             <React.Fragment>
                 <ScrollToTop status={this.props.status} />
                 <Helmet>
-                    <title>{`Projects | ${title}`}</title>
+                    <title>{`Создания веб сайтов | ${title}`}</title>
                     <meta name="description" content={description} />
                 </Helmet>
                 <ProjectContainer>
@@ -45,7 +45,7 @@ class ProjectSPR extends Component {
                     <ProjectHeader
                         title={title}
                         description={description}
-                        url="/projects/contact"
+                        url="/contact"
                         roles={roles}
                     />
                     <ProjectSection>
