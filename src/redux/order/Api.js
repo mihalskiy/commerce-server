@@ -1,4 +1,4 @@
-const apiInsertNewOrder =  'http://ec2-54-190-128-187.us-west-2.compute.amazonaws.com' + '/api/orders';
+const apiInsertNewOrder =  'https://nurmaget.com' + '/api/orders';
 
 
 //send POST request to add new Order

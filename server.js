@@ -50,11 +50,11 @@ app.use(passport.session())
 
 require('./server/auth/auth')(app);
 require('./server/routes/router')(app);
-app.use(express.static(path.join(__dirname + '/public')))
+app.use(express.static(path.join(__dirname + '/build')))
 
 // sends index.html
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'))
+    res.sendFile(path.join(__dirname + '/build/index.html'))
 })
 /*app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
