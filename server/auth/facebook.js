@@ -28,7 +28,7 @@ module.exports = (app, User) => {
     app.get('/facebook', passport.authenticate('facebook', {scope: 'email'}))
 
     app.get('/callback', passport.authenticate('facebook', {
-        successRedirect: '/home',
+        successRedirect: '/',
         failureRedirect: '/login'
     }))
 
