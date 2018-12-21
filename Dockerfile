@@ -7,6 +7,5 @@ COPY package*.json ./
 RUN npm install nodemon -g -qy
 RUN npm install -qy
 COPY  . .
-RUN npm run client
-
+RUN npm run build
 EXPOSE 8080
