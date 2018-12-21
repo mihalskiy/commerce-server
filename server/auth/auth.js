@@ -46,10 +46,10 @@ module.exports = (app) => {
     })
 
 
-    require('./facebook')(app, User)
-    /*router.use('/google', require('./google'))
+    require('./facebook')(app, User);
+    require('./google')(app, User);
 
-    router.use('/facebook', require('./facebook'))*/
+    /*router.use('/facebook', require('./facebook'))*/
 
 }
 
