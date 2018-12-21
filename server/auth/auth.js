@@ -1,4 +1,5 @@
 const User = require('../models').User;
+const social = require('./socialAuth');
 
 module.exports = (app) => {
 
@@ -45,9 +46,8 @@ module.exports = (app) => {
         res.json(req.user)
     })
 
-
-    require('./facebook')(app, User);
-    require('./google')(app, User);
+    social.google(app, User)
+    social.facebook(app, User)
 
     /*router.use('/facebook', require('./facebook'))*/
 
