@@ -17,11 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       telephone: {
           type: DataTypes.STRING,
-          allowNull: false,
       },
       password: {
           type: DataTypes.STRING,
-          allowNull: false,
       },
       tags: {
           type: DataTypes.ARRAY(DataTypes.STRING) // QTN: make enum or diff model?

@@ -10,16 +10,13 @@ _______________________________________________________________________________
 
 DESIGNER | デザイナー
 
-Hamish Williams
+Mikhalskiy Ruslan
 Hand crafted design & web development
 
 Design tools:
 Sketch
 InVision
 Photoshop
-
-twitter.com/hamishmw
-github.com/hamishmw
 
 _______________________________________________________________________________
 
