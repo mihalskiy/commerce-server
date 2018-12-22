@@ -52,24 +52,38 @@ const Header = ({ menuOpen, toggleMenu }) => (
             onClick={toggleMenu}
             to="/#intro"
           >
-            Intro
+            Главная
           </HeaderMobileNavLink>
           <HeaderMobileNavLink
             delay={300}
             status={status}
             onClick={toggleMenu}
-            to="/#projects"
+            to="/#portfolio"
           >
-            Projects
+            Портфолио
           </HeaderMobileNavLink>
+        <HeaderMobileNavLink
+            delay={250}
+            status={status}
+            onClick={toggleMenu}
+            to="/#price"
+        >
+            Цены
+        </HeaderMobileNavLink>
+        <HeaderMobileNavLink
+            delay={250}
+            status={status}
+            onClick={toggleMenu}
+            to="/#news"
+        >
+            Блог
+        </HeaderMobileNavLink>
           <HeaderMobileNavLink
             delay={350}
             status={status}
             onClick={toggleMenu}
             to="/#details"
-          >
-            Details
-          </HeaderMobileNavLink>
+          >Контакты</HeaderMobileNavLink>
           <HeaderIcons toggleMenu={toggleMenu} />
         </HeaderMobileNav>
       )}
@@ -79,8 +93,10 @@ const Header = ({ menuOpen, toggleMenu }) => (
     </HeaderLogo>
     <HeaderNav role="navigation">
       <HeaderNavList>
-        <HeaderNavLink to="/#projects">Портфолио</HeaderNavLink>
-        <HeaderNavLink to="/#details">О нас</HeaderNavLink>
+        <HeaderNavLink to="/#portfolio">Портфолио</HeaderNavLink>
+        <HeaderNavLink to="/#price">Цены</HeaderNavLink>
+        <HeaderNavLink to="/#news">Новости</HeaderNavLink>
+        <HeaderNavLink to="/#details">Контакты</HeaderNavLink>
       </HeaderNavList>
       <HeaderIcons />
     </HeaderNav>
@@ -180,7 +196,7 @@ const HeaderNavLink = styled(NavLink)`
   &:after {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 80%;
     right: 10px;
     left: 10px;
     height: 4px;
@@ -294,7 +310,7 @@ const HeaderMobileNavLink = styled(NavLink).attrs({
   &:after {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 80%;
     right: 60px;
     left: 60px;
     height: 4px;

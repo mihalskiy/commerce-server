@@ -1,4 +1,4 @@
-const apiInsertNewOrder =  'https://nurmaget.com' + '/api/orders';
+const apiInsertNewOrder =  'http://localhost:8000' + '/api/orders';
 
 
 //send POST request to add new Order

@@ -16,6 +16,7 @@ export default actionTypes;
 
 export const  getOrder = data => {
     return {
+        loading: true,
         type: NEW_ORDER,
         payload: {
             data
@@ -26,8 +27,9 @@ export const  getOrder = data => {
 export const  fetchSuccessAction = (payload) => {
     return {
         type: FETCH_SUCCEEDED,
+        loading: false,
         payload: {
-            data: payload
+            complate: payload
         }
     }
 };
@@ -35,6 +37,8 @@ export const  fetchSuccessAction = (payload) => {
 export const fetchFailedAction = (error) => {
     return {
         type: FETCH_FAILED_ORDER,
-        error
+        payload: {
+            error
+        }
     }
 }

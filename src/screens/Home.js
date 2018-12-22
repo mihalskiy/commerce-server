@@ -17,7 +17,7 @@ import sliceProject from '../assets/380534.png';
 import sliceProjectLarge from '../assets/slice-project-large.png';
 import sliceProjectPlaceholder from '../assets/slice-project-placeholder.png';
 
-const disciplines = ['React', 'Angular', 'Node.js', 'Postgres'];
+const disciplines = ['Лендинг пейдж', 'Сайт-визитка компании', 'Интернет-магазин'];
 
 export default class Home extends Component {
   constructor(props) {
@@ -108,7 +108,8 @@ export default class Home extends Component {
   }
 
   handleHashchange = (hash, scroll) => {
-    const hashSections = [this.intro, this.projectOne, this.details];
+
+    const hashSections = [this.intro, this.projectOne, this.projectTwo, this.projectThree, this.details];
     const hashString = hash.replace('#', '');
     const element = hashSections.filter(item => item.id === hashString)[0];
 
@@ -163,7 +164,7 @@ export default class Home extends Component {
           backgroundLoaded={backgroundLoaded}
         />
         <ProjectItem
-          id="projects"
+          id="portfolio"
           tabIndex={0}
           sectionRef={section => this.projectOne = section}
           visible={visibleSections.includes(this.projectOne)}
@@ -178,6 +179,7 @@ export default class Home extends Component {
           imageType="laptop"
         />
         <ProjectItem
+          id="price"
           tabIndex={0}
           sectionRef={section => this.projectTwo = section}
           visible={visibleSections.includes(this.projectTwo)}
@@ -206,6 +208,7 @@ export default class Home extends Component {
           visible={visibleSections.includes(this.projectThree)}
           index="03"
           title="Блог"
+          id="news"
           description="Выбор технологий для большого и не очень большого веб-проекта"
           buttonText="Перейти к блогу"
           buttonTo="/slice"

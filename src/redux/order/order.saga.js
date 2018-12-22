@@ -1,13 +1,15 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
-import actionTypes, {fetchSuccessAction} from "./order.action";
+import actionTypes, {fetchSuccessAction, fetchFailedAction} from "./order.action";
 import { Api } from './Api';
 
 function* addOrderSaga(payload) {
-
+    const result = yield Api.insertNewOrder(payload);
     try {
-        const result = yield Api.insertNewOrder(payload);
+
         if (result.ok) {
             yield put(fetchSuccessAction(result.ok));
+        } else {
+            yield put(fetchFailedAction(!result.ok));
         }
 
     } catch (error) {

@@ -6,7 +6,7 @@ function reducer(state = initialState.order, action = {}) {
     switch (type) {
         case OrderAction.NEW_ORDER :
             return state.merge({
-                loading: false,
+                loading: true,
                 ...payload
             });
         case OrderAction.FETCH_SUCCEEDED :
@@ -16,7 +16,7 @@ function reducer(state = initialState.order, action = {}) {
             });
         case OrderAction.FETCH_FAILED_ORDER :
             return state.merge({
-
+                ...payload
             });
         default:
             return state;

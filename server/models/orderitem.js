@@ -10,10 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
     OrderItem.associate = (models) => {
-        OrderItem.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE',
-    });
+
   };
   return OrderItem;
 };
