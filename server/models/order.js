@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     message: DataTypes.STRING
   }, {});
   Orders.associate = function(models) {
-    // associations can be defined here
+    Orders.belongsTo(models.User, {
+      foreignKey: 'id',
+      onDelete: 'CASCADE',
+    });
   };
   return Orders;
 };

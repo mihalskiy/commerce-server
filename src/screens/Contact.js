@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import styled, { css } from 'styled-components';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import { Helmet } from 'react-helmet';
@@ -9,8 +10,7 @@ import DecoderText from '../components/DecoderText';
 import { RouterButton, ProjectHeaderButton } from '../components/Button';
 import { Media, AnimFade } from '../utils/StyleUtils';
 import ScrollToTop from '../utils/ScrollToTop';
-import {getOrder, fetchSuccessAction } from '../redux/order/order.action';
-import {bindActionCreators} from "redux";
+import {getOrder, fetchSuccessAction, fetchFailedAction } from '../redux/order/order.action';
 
 
 const prerender = window.location.port === '45678';
@@ -18,8 +18,8 @@ const initDelay = 300;
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getOrder,
-    fetchSuccessAction
-
+    fetchSuccessAction,
+    fetchFailedAction
 }, dispatch);
 
 class Contact extends PureComponent {
@@ -30,9 +30,7 @@ class Contact extends PureComponent {
             email: '',
             message: '',
             name: '',
-            phone: '',
-            sending: false,
-            complete: false
+            phone: ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -56,36 +54,37 @@ class Contact extends PureComponent {
             phone: this.state.phone
         });
         event.preventDefault();
-        this.props.fetchSuccessAction()
-
     }
 
     render() {
-        const { status,complete } = this.props;
-        const { email, phone, name, message, sending } = this.state;
+        const { status, complete, loading, error } = this.props;
+        const { email, phone, name, message } = this.state;
 
-        console.log('this.complete', complete)
+
+
+        console.log('this.props', this.state)
 
         return (
             <ContactWrapper>
                 <ScrollToTop status={status} />
                 <Helmet>
-                    <title>Contact me</title>
+                    <title>Заказать сайт сейчас</title>
                     <meta
                         name="description"
-                        content="Send me a message if you're interested in discussing a project or if you just want to say hi"
+                        content="Заказать розработку веб сайта сейчас"
                     />
                 </Helmet>
                 <TransitionGroup component={React.Fragment}>
-                    {!complete &&
+                    {!complete && !error &&
                     <Transition appear timeout={1600} mountOnEnter unmountOnExit>
                         {status => (
                             <ContactForm onSubmit={this.handleClick} role="form">
                                 <ContactTitle status={status} delay={50}>
                                     <DecoderText
-                                        text="Say hello"
+                                        text="Заказать сайт сейчас"
                                         start={status === 'entering' && !prerender}
                                         offset={140}
+
                                     />
                                 </ContactTitle>
                                 <ContactDivider status={status} delay={100}/>
@@ -142,18 +141,19 @@ class Contact extends PureComponent {
                                     multiline
                                 />
                                 <ContactButton
-                                    sending={sending}
-                                    loading={sending}
+                                    sending={loading}
+                                    loading={loading}
                                     status={status}
                                     delay={400}
                                     icon="send"
                                     type="submit"
                                 >
-                                    Send Message
+                                    Оформить Заказ
                                 </ContactButton>
                             </ContactForm>
                         )}
                     </Transition>
+
                     }
           {complete &&
             <Transition appear timeout={0} mountOnEnter unmountOnExit>
@@ -182,6 +182,33 @@ class Contact extends PureComponent {
               )}
             </Transition>
           }
+        {error &&
+        <Transition appear timeout={0} mountOnEnter unmountOnExit>
+            {status => (
+                <ContactComplete>
+                    <ContactCompleteTitle
+                        status={status}
+                        delay={0}
+                    >
+                        Произошла ошибка!
+                    </ContactCompleteTitle>
+                    <ContactCompleteText status={status} delay={200}>
+                        {name}! Свяжитесь снами по телефону <b>0632948902</b>, или попробуйте позже
+                    </ContactCompleteText>
+                    <ContactCompleteButton
+                        secondary
+                        to="/"
+                        href="/"
+                        status={status}
+                        delay={400}
+                        icon="chevronRight"
+                    >
+                        Вернуться на главную страницу
+                    </ContactCompleteButton>
+                </ContactComplete>
+            )}
+        </Transition>
+        }
                 </TransitionGroup>
             </ContactWrapper>
         );
@@ -189,8 +216,11 @@ class Contact extends PureComponent {
 }
 
 const mapStateToProps = function (state) {
+                            debugger
     return {
-        complete: state.order.data,
+        complete: state.order.complate,
+        loading: state.order.loading,
+        error: state.order.error
     }
 };
 

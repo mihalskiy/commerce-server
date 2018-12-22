@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "node-telephone-user-search \n If you dont have install node-js, please go this link [https://nodejs.org](https://nodejs.org)",
   "main": "server.js",
-  "homepage": "https://nurmaget.com",
+  "homepage": "http://localhost:8000",
   "private": true,
   "proxy": "http://ec2-54-190-128-187.us-west-2.compute.amazonaws.com",
   "scripts": {
