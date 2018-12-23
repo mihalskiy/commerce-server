@@ -60,10 +60,6 @@ class Contact extends PureComponent {
         const { status, complete, loading, error } = this.props;
         const { email, phone, name, message } = this.state;
 
-
-
-        console.log('this.props', this.state)
-
         return (
             <ContactWrapper>
                 <ScrollToTop status={status} />

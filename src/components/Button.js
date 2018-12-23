@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
-import Icon from '../utils/Icon';
+import {Icon} from '../utils/Icon';
 import Theme from '../utils/Theme';
 import { ColorTint } from '../utils/StyleUtils';
 

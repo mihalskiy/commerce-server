@@ -15,7 +15,9 @@ import ProjectSlice from '../screens/ProjectSlice'
 import NotFound from '../screens/NotFound'
 import { Helmet } from "react-helmet";
 import Header from '../components/Header';
+import AuthForm from '../components/AuthForm';
 import NavToggle from '../components/NavToggle';
+import EnterPage from '../components/EnterPage';
 import Theme from '../utils/Theme';
 import GothamBook from '../fonts/gotham-book.woff2';
 import GothamMedium from '../fonts/gotham-medium.woff2';
@@ -54,27 +56,26 @@ const fontStyles = `
 `;
 
 class App extends Component {
-  state = {
-    menuOpen: false,
-  }
+    state = {
+        toggleAdditional: false
+    }
 
-  componentDidMount() {
-    console.info(consoleMessage);
-    window.history.scrollRestoration = 'manual';
-  }
+    componentDidMount() {
+        console.info(consoleMessage);
+        window.history.scrollRestoration = 'manual';
+    }
 
-  toggleMenu = () => {
-    const { menuOpen } = this.state;
-    this.setState({ menuOpen: !menuOpen });
-  }
+    toggleMenu = () => {
+        const { toggleAdditional } = this.state;
+        this.setState({ toggleAdditional: !toggleAdditional });
+    }
 
-  setBodyOverflow = state => {
-    document.body.style.overflow = state;
-  }
+    setBodyOverflow = state => {
+        document.body.style.overflow = state;
+    }
 
   render() {
-    const { menuOpen } = this.state;
-    console.log('process.env.PUBLIC_URL', process.env.PUBLIC_URL)
+    const { toggleAdditional } = this.state;
     return (
         <React.Fragment>
             <ThemeProvider theme={Theme}>
@@ -88,8 +89,10 @@ class App extends Component {
                             </Helmet>
                             <GlobalStyles />
                             <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
-                            <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
-                            <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
+                            <Header toggleMenu={this.toggleMenu} menuOpen={toggleAdditional} />
+                            <NavToggle onClick={this.toggleMenu} menuOpen={toggleAdditional} />
+                            <AuthForm toggleMenu={this.toggleMenu} formOpen={toggleAdditional} />
+                            <EnterPage onClick={this.toggleMenu} formOpen={toggleAdditional} />
                             <TransitionGroup component={React.Fragment} >
                                 <Transition
                                     key={location.pathname}
@@ -114,8 +117,8 @@ class App extends Component {
                                                                 </Helmet>
                                                                 <GlobalStyles />
                                                                 <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
-                                                                <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
-                                                                <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
+                                                                <Header toggleMenu={this.toggleMenu} menuOpen={toggleAdditional} />
+                                                                <NavToggle onClick={this.toggleMenu} menuOpen={toggleAdditional} />
                                                                 <TransitionGroup component={React.Fragment} >
                                                                     <Transition
                                                                         key={location.pathname}

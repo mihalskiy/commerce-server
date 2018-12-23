@@ -3,8 +3,14 @@ const Spacing = {
   spacingOuter: {
     desktop: '60px',
     tablet: '40px',
-    mobile: '20px',
+    mobile: '60px',
   },
+  userSelect: {
+    desktop: '60px',
+    tablet: '40px',
+    mobile: '60px',
+    right: '10px'
+  }
 }
 
 export default {

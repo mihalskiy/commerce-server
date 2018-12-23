@@ -148,7 +148,7 @@ export default class Home extends Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>Welcome to studio Designer</title>
+          <title>Веб студия Nurmaget | Розработка сайтов Любой сложности</title>
           <meta
             name="description"
             content="a digital designer working on web &amp; mobile apps with a focus on motion and user experience design."
