@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 import Monogram from './Monogram';
-import Icon from '../utils/Icon';
+import {Icon} from '../utils/Icon';
 import Theme from '../utils/Theme';
 import { Media } from '../utils/StyleUtils';
 

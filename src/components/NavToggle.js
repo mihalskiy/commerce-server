@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../utils/Icon';
+import {Icon} from '../utils/Icon';
 import { Media } from '../utils/StyleUtils';
 
 const NavToggle = ({ onClick, menuOpen }) => (
@@ -20,7 +20,6 @@ const NavToggleButton = styled.button`
   position: fixed;
   top: ${props => props.theme.spacingOuter.mobile};
   right: ${props => props.theme.spacingOuter.mobile};
-  margin: 0;
   display: none;
   width: 48px;
   height: 48px;

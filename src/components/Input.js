@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import TextArea from './TextArea';
 
 const Input = ({
-  id,
-  label,
-  hasValue,
-  multiline,
-  className,
+    id,
+    label,
+    hasValue,
+    multiline,
+    className,
+    type,
   ...props,
 }) => {
   return (
@@ -17,6 +18,7 @@ const Input = ({
           id={id}
           name={id}
           aria-labelledby={`${id}-label`}
+          type={type}
           {...props}
         />
       }
