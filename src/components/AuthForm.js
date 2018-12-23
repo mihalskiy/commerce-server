@@ -90,7 +90,7 @@ class AuthForm extends Component {
                 <Transition appear timeout={0} mountOnEnter unmountOnExit>
                     {status => (
                         <Login>
-                            <LoginTitle>Форма регистрации</LoginTitle>
+                            <LoginTitle>Регистрация</LoginTitle>
                             <InputGroup>
                                 {userIcon}
                                 <UserInput
@@ -170,7 +170,7 @@ const Login = styled.form`
   border: 1px solid #000;
   background-color: rgba(#000, .1);
   background: #111111;
-  opacity: 0.9;
+  opacity: 0.99;
   @include background-image(linear-gradient(top, rgba(#000, .1), rgba(#000, .3)));
   .extra {
 
