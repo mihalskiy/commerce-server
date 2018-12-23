@@ -22,133 +22,131 @@ class AuthForm extends Component {
         this.toggleAuth = this.toggleAuth.bind(this);
     }
 
-    componentDidMount() {
-        window.history.scrollRestoration = 'manual';
-    }
-
     toggleAuth () {
         const {isLogin} = this.state;
-
-        this.setState({isLogin: !isLogin})
-        console.log(isLogin)
-
+        this.setState({isLogin: !isLogin});
     }
 
     render() {
-        const { status, complete, loading, error } = this.props;
+        const { formOpen, complete, loading, error } = this.props;
         const { email, isLogin, name, password } = this.state;
         console.log(isLogin)
         return (
-            <React.Fragment>
-                {isLogin &&
-                    <Login>
-                        <LoginTitle>Форма входа</LoginTitle>
-                        <InputGroup>
-                            {userIcon}
-                            <UserInput
-                                status={status}
-                                delay={200}
-                                onChange={this.handleInputChange}
-                                autoComplete="name"
-                                id="name"
-                                type="text"
-                                hasValue={!!name}
-                                value={name}
-                                maxLength={320}
-                                required
+            <TransitionGroup component={React.Fragment}>
+                {isLogin && formOpen&&
+                <Transition appear timeout={0} mountOnEnter unmountOnExit>
+                    {status => (
+                        <Login status={status}
+                               delay={0}>
+                            <LoginTitle>Форма входа</LoginTitle>
+                            <InputGroup>
+                                {userIcon}
+                                <UserInput
+                                    status={status}
+                                    delay={200}
+                                    onChange={this.handleInputChange}
+                                    autoComplete="name"
+                                    id="name"
+                                    type="text"
+                                    hasValue={!!name}
+                                    value={name}
+                                    maxLength={320}
+                                    required
                                 />
-                        </InputGroup>
-                        <InputGroup>
-                            {passwordIcon}
-                            <UserInput
-                            status={status}
-                            delay={200}
-                            onChange={this.handleInputChange}
-                            id="password"
-                            type="password"
-                            hasValue={!!password}
-                            value={password}
-                            required
-                            />
-                    </InputGroup>
-                    <ButtonGroup>
-                        <AuthDescription onClick={this.toggleAuth}>Зарегистрироваться</AuthDescription>
-                        <ContactButton
-                            sending={loading}
-                            loading={loading}
-                            status={'entering'}
-                            delay={400}
-                            icon="send"
-                            type="submit">
-                            Войти
-                        </ContactButton>
-                    </ButtonGroup>
-                    <AuthSocial>
-                        <AuthDescription>Войти с помощью соцсетей</AuthDescription>
-                        <FacebookIcon>{facebookIcon}</FacebookIcon>
-                        <GoogleIcon>{googleIcon}</GoogleIcon>
-                    </AuthSocial>
-                    </Login>
+                            </InputGroup>
+                            <InputGroup>
+                                {passwordIcon}
+                                <UserInput
+                                    status={status}
+                                    delay={200}
+                                    onChange={this.handleInputChange}
+                                    id="password"
+                                    type="password"
+                                    required
+                                />
+                            </InputGroup>
+                            <ButtonGroup>
+                                <AuthDescription onClick={this.toggleAuth}>Зарегистрироваться</AuthDescription>
+                                <AuthButton
+                                    sending={loading}
+                                    loading={loading}
+                                    status={status}
+                                    delay={400}
+                                    icon="send"
+                                    type="submit">
+                                    {status}
+                                </AuthButton>
+                            </ButtonGroup>
+                            <AuthSocial>
+                                <AuthDescription>Войти с помощью соцсетей</AuthDescription>
+                                <FacebookIcon>{facebookIcon}</FacebookIcon>
+                                <GoogleIcon>{googleIcon}</GoogleIcon>
+                            </AuthSocial>
+                        </Login>
+                    )}
+                </Transition>
                 }
-                {!isLogin &&
-                    <Login>
-                        <LoginTitle>Форма регистрации</LoginTitle>
-                        <InputGroup>
-                            {userIcon}
-                            <UserInput
-                                status={status}
-                                delay={200}
-                                onChange={this.handleInputChange}
-                                autoComplete="name"
-                                id="name"
-                                type="text"
-                                hasValue={!!name}
-                                value={name}
-                                maxLength={320}
-                                required
-                            />
-                        </InputGroup>
-                        <InputGroup>
-                            {passwordIcon}
-                            <UserInput
-                                status={status}
-                                delay={200}
-                                onChange={this.handleInputChange}
-                                id="password"
-                                type="password"
-                                hasValue={!!password}
-                                value={password}
-                                required
-                            />
-                        </InputGroup>
-                        <ButtonGroup>
-                            <AuthDescription onClick={this.toggleAuth}>Вxoд</AuthDescription>
-                            <AuthButton
-                                sending={loading}
-                                loading={loading}
-                                status={'entering'}
-                                delay={400}
-                                icon="send"
-                                type="submit">
-                                Регистрация
-                            </AuthButton>
-                        </ButtonGroup>
-                        <AuthSocial>
-                            <AuthDescription>Зарегистрироваться с помощью соцсетей</AuthDescription>
-                                <Link to={this.proccess.FACEBOOK_URL}>
+                {!isLogin && formOpen &&
+                <Transition appear timeout={0} mountOnEnter unmountOnExit>
+                    {status => (
+                        <Login>
+                            <LoginTitle>Форма регистрации</LoginTitle>
+                            <InputGroup>
+                                {userIcon}
+                                <UserInput
+                                    status={status}
+                                    delay={200}
+                                    onChange={this.handleInputChange}
+                                    autoComplete="name"
+                                    id="name"
+                                    type="text"
+                                    hasValue={!!name}
+                                    value={name}
+                                    maxLength={320}
+                                    required
+                                />
+                            </InputGroup>
+                            <InputGroup>
+                                {passwordIcon}
+                                <UserInput
+                                    status={status}
+                                    delay={200}
+                                    onChange={this.handleInputChange}
+                                    id="password"
+                                    type="password"
+                                    required
+                                />
+                            </InputGroup>
+                            <ButtonGroup>
+                                <AuthDescription onClick={this.toggleAuth}>Вxoд</AuthDescription>
+                                <AuthButton
+                                    sending={loading}
+                                    loading={loading}
+                                    status={'entering'}
+                                    delay={400}
+                                    icon="send"
+                                    type="submit">
+                                    Регистрация
+                                </AuthButton>
+                            </ButtonGroup>
+                            <AuthSocial>
+                                <AuthDescription>Зарегистрироваться с помощью соцсетей</AuthDescription>
+                                <Link to={'https://nurmaget.com/facebook'} className="socialLink">
                                     <FacebookIcon>
                                         {facebookIcon}
                                     </FacebookIcon>
                                 </Link>
-                                <Link to={this.proccess.GOOGLE_URL}>
+                                <Link to={'https://nurmaget.com/google'} className="socialLink">
                                     <GoogleIcon>
                                         {googleIcon}
                                     </GoogleIcon>
                                 </Link>
-                        </AuthSocial>
-                    </Login>
+                            </AuthSocial>
+                        </Login>
+                    )}
+                </Transition>
                 }
-            </React.Fragment>
+            </TransitionGroup>
         )
     }
 };
@@ -208,7 +206,6 @@ const InputGroup = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 0 0 15px 0;
 
   svg {
     width: 16px;
@@ -240,6 +237,7 @@ const ButtonGroup = styled.div`
   align-items: center;
   position: relative;
   margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 const AuthDescription = styled.span `
@@ -322,6 +320,10 @@ const AuthSocial = styled.div`
   );
   border-top: 1px solid #000;
   word-spacing: -1;
+
+  .socialLink {
+    height: 100%;
+  }
 `;
 
 const FacebookIcon = styled.a`

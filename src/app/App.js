@@ -57,7 +57,8 @@ const fontStyles = `
 
 class App extends Component {
     state = {
-        toggleAdditional: false
+        menuOpen: false,
+        formOpen: false,
     }
 
     componentDidMount() {
@@ -66,8 +67,13 @@ class App extends Component {
     }
 
     toggleMenu = () => {
-        const { toggleAdditional } = this.state;
-        this.setState({ toggleAdditional: !toggleAdditional });
+        const { menuOpen } = this.state;
+        this.setState({ menuOpen: !menuOpen });
+    }
+
+    toggleForm = () => {
+        const { formOpen } = this.state;
+        this.setState({ formOpen: !formOpen });
     }
 
     setBodyOverflow = state => {
@@ -75,7 +81,7 @@ class App extends Component {
     }
 
   render() {
-    const { toggleAdditional } = this.state;
+    const { menuOpen, formOpen } = this.state;
     return (
         <React.Fragment>
             <ThemeProvider theme={Theme}>
@@ -89,10 +95,10 @@ class App extends Component {
                             </Helmet>
                             <GlobalStyles />
                             <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
-                            <Header toggleMenu={this.toggleMenu} menuOpen={toggleAdditional} />
-                            <NavToggle onClick={this.toggleMenu} menuOpen={toggleAdditional} />
-                            <AuthForm toggleMenu={this.toggleMenu} formOpen={toggleAdditional} />
-                            <EnterPage onClick={this.toggleMenu} formOpen={toggleAdditional} />
+                            <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
+                            <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
+                            <AuthForm toggleMenu={this.toggleMenu} formOpen={formOpen} />
+                            <EnterPage onClick={this.toggleForm} formOpen={formOpen} />
                             <TransitionGroup component={React.Fragment} >
                                 <Transition
                                     key={location.pathname}
@@ -117,8 +123,8 @@ class App extends Component {
                                                                 </Helmet>
                                                                 <GlobalStyles />
                                                                 <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
-                                                                <Header toggleMenu={this.toggleMenu} menuOpen={toggleAdditional} />
-                                                                <NavToggle onClick={this.toggleMenu} menuOpen={toggleAdditional} />
+                                                                <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
+                                                                <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
                                                                 <TransitionGroup component={React.Fragment} >
                                                                     <Transition
                                                                         key={location.pathname}
