@@ -1,5 +1,5 @@
 const ordersController = require('../controllers').orders;
-const orderItemsController = require('../controllers').orderItems;
+const portfolioController = require('../controllers').portfolio;
 require('dotenv').config();
 
 module.exports = (app) => {
@@ -12,6 +12,8 @@ module.exports = (app) => {
   app.get('/api/order/:id', ordersController.retrieve);
   app.put('/api/order/:id', ordersController.update);
   app.delete('/api/order/:id', ordersController.destroy);
+
+  app.get('/api/portfolio', portfolioController.list);
 
   /*app.post('/api/todos/:todoId/items', orderItemsController.create);
   app.put('/api/todos/:todoId/items/:todoItemId', orderItemsController.update);

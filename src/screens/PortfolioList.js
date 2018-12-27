@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {LinkButton} from '../components/Button'
 import styled from 'styled-components';
 
 const theme = {
@@ -6,37 +8,60 @@ const theme = {
     progress: "25%"
 };
 
-let PortfolioList = ({bg, title, description, list}) =>(
-  <PortfolioListContent theme={{main: bg}}>
-      <PortfolioListItem>
-
-          <PortfolioListItemAlign>
-              <PortfolioListTitle>{title}</PortfolioListTitle>
-              <PortfolioListSubTitle> {description} </PortfolioListSubTitle>
-          </PortfolioListItemAlign>
-          <PortfolioListItemAlign>
-              {list && list.map((list, index) => (
-                  <PortfolioTable number={list.id} nume={list.name} progress={list.progress} key={`role_${index}`}/>
-              ))}
-          </PortfolioListItemAlign>
-      </PortfolioListItem>
-  </PortfolioListContent>
-
-);
-
 let PortfolioTable = ({number, name, progress}) => (
-        <PortfolioTableContent>
-            <PortfolioTableNum>{number}</PortfolioTableNum>
-            <PortfolioTableTitle>{name}</PortfolioTableTitle>
-            <PortfolioTableProgressAlign>
-                <PortfolioTableProgress>
-                    <PortfolioTableProgressItem theme={{progress: progress + '%'}} />
-                </PortfolioTableProgress>
-                <PortfolioTableNum>{progress}%</PortfolioTableNum>
-            </PortfolioTableProgressAlign>
+    <PortfolioTableContent>
+        <PortfolioTableNum>{number}</PortfolioTableNum>
+        <PortfolioTableTitle>{name}</PortfolioTableTitle>
+        <PortfolioTableProgressAlign>
+            <PortfolioTableProgress>
+                <PortfolioTableProgressItem theme={{progress: progress + '%'}} />
+            </PortfolioTableProgress>
+            <PortfolioTableNum>{progress}%</PortfolioTableNum>
+        </PortfolioTableProgressAlign>
 
-        </PortfolioTableContent>
+    </PortfolioTableContent>
 );
+
+class PortfolioList extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const {id, bg, title, description, list, url} = this.props;
+
+        return (
+            <React.Fragment>
+                <Link to={`/${id}`}> </Link>
+                    <PortfolioListContent theme={{main: bg}}
+                                          onClick={() =>this.handleEvent(id)}>
+
+                        <PortfolioListItem>
+
+                            <PortfolioListItemAlign>
+                                <PortfolioListTitle>{title}</PortfolioListTitle>
+                                <PortfolioListSubTitle> {description} </PortfolioListSubTitle>
+                            </PortfolioListItemAlign>
+                            <PortfolioListItemAlign>
+                                {list && list.map((list, index) => (
+                                    <PortfolioTable number={list.id} nume={list.name} progress={list.progress} key={`role_${index}`}/>
+                                ))}
+                            </PortfolioListItemAlign>
+                            <LinkButton
+                                secondary
+                                style={{ paddingLeft: '3px' }}
+                                icon="chevronRight"
+                                href={`/portfolio/${id}`}
+                                rel="noopener noreferrer"
+                            />
+                        </PortfolioListItem>
+                    </PortfolioListContent>
+
+            </React.Fragment>
+        )
+    }
+}
 
 
 export const PortfolioTableProgressAlign = styled.div`

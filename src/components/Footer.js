@@ -5,8 +5,8 @@ import { Media } from '../utils/StyleUtils';
 
 const Footer = () => (
   <FooterContainer role="contentinfo">
-    <FooterDate>{`© ${new Date().getFullYear()}`} Hamish Williams.</FooterDate>
-    <Anchor secondary href="/humans.txt">Crafted by yours truly</Anchor>
+    <FooterDate>{`© ${new Date().getFullYear()}`} Веб студия Nurmaget.</FooterDate>
+    <Anchor secondary href="/humans.txt">Создания веб сайтов под ключ</Anchor>
   </FooterContainer>
 );
 

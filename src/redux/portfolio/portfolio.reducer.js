@@ -20,7 +20,7 @@ function reducer(state = initialState.portfolio, action = {}) {
                 loading: false,
                 ...payload
             });
-        case PortfolioAction.FETCH_FAILED_ORDER :
+        case PortfolioAction.FAILED_PORTFOLIO :
             return state.merge({
                 ...payload
             });

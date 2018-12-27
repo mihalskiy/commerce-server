@@ -1,18 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Portfolio = sequelize.define('Portfolio', {
-    content: DataTypes.STRING,
-    status: DataTypes.STRING,
-    type: DataTypes.STRING,
-    like_count: DataTypes.INTEGER,
-    has_article: DataTypes.BOOLEAN,
+    bgColor: DataTypes.STRING,
     title: DataTypes.STRING,
+    url: DataTypes.STRING,
+    description: DataTypes.STRING,
+    categoryList: DataTypes.TEXT
   }, {});
   Portfolio.associate = function(models) {
-    Portfolio.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE',
-      });
+    // associations can be defined here
   };
   return Portfolio;
 };

@@ -1,3 +1,4 @@
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Portfolios', {
@@ -7,26 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
+      bgColor: {
         type: Sequelize.STRING
-      },
-      status: {
-        type: Sequelize.STRING
-      },
-      type: {
-        type: Sequelize.STRING
-      },
-      like_count: {
-        type: Sequelize.INTEGER
-      },
-      has_article: {
-        type: Sequelize.BOOLEAN
       },
       title: {
         type: Sequelize.STRING
       },
-      contnet: {
-        type: Sequelize.TEXT
+      url: {
+        type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      categoryList: {
+        type: Sequelize.ARRAY(Sequelize.TEXT)
       },
       createdAt: {
         allowNull: false,

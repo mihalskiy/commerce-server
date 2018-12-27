@@ -1,40 +1,16 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
-import actionTypes, {getPortfolioSuccess} from "./portfolio.action";
-
-
-
-const arr = [
-    {
-        name: 'Простой',
-        price: '29',
-        cent: '99',
-        currency: '$',
-        title: 'bla',
-        fields: [
-            {
-                id: 1,
-                name: 'adgfgrwg'
-            }
-        ]
-    },
-    {
-        name: 'Стандарт',
-        price: '99',
-        cent: '59',
-        currency: '$',
-        title: 'xaxaxax'
-    },
-    {
-        name: 'Лучший',
-        price: '15',
-        cent: '45',
-        currency: '$',
-        title: 'magic'
-    }
-];
+import actionTypes, {getPortfolioSuccess, failedPortfolio} from "./portfolio.action";
+import {Api} from "./Api";
+import {fetchFailedAction} from "../order/order.action";
 
 function* getPortfolio() {
-    yield put(getPortfolioSuccess(arr));
+    try {
+        const result = yield Api.getPortfolioList();
+        yield put(getPortfolioSuccess(result));
+    } catch (e) {
+        yield put(failedPortfolio(e));
+    }
+
 }
 
 function* actionWatcher() {
