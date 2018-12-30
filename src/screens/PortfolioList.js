@@ -49,7 +49,7 @@ debugger
                                     icon="send"
                                     sending={false}
                                     loading={false}
-                                    href={`/portfolio/${id}`}
+                                    href={`/portfolio/${id}/${title}`}
                                     status={'entering'}>
 
                                     Перейти

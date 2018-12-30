@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import {
-    HashRouter as Router,
     Route,
     BrowserRouter,
     Switch
@@ -11,7 +10,7 @@ import Home from '../screens/Home'
 import ProjectSPR from '../screens/ProjectSPR'
 import Contact from '../screens/Contact'
 import Portfolio from '../screens/Portfolio'
-import ProjectSlice from '../screens/ProjectSlice'
+import SinglePortfolio from '../screens/SinglePortfolio'
 import NotFound from '../screens/NotFound'
 import { Helmet } from "react-helmet";
 import Header from '../components/Header';
@@ -26,7 +25,7 @@ import GothamMedium from '../fonts/gotham-medium.woff2';
 // const Contact = asyncComponent(props => import("../screens/Contact"));
 // const ProjectSPR = asyncComponent(props => import("../screens/ProjectSPR"));
 // const Portfolio = asyncComponent(props => import("../screens/Portfolio"));
-// const ProjectSlice = asyncComponent(props => import("../screens/ProjectSlice"));
+// const SinglePortfolio = asyncComponent(props => import("../screens/SinglePortfolio"));
 // const NotFound = asyncComponent(props => import("../screens/NotFound"));
 
 const consoleMessage = `
@@ -142,7 +141,7 @@ class App extends Component {
                                                                                     <Route path="/contact" render={props => <Contact {...props} status={status} />} />
                                                                                     <Route path="/price" render={props => <ProjectSPR {...props} status={status} />} />
                                                                                     <Route exact path="/portfolio" render={props => <Portfolio {...props} status={status} />} />
-                                                                                    <Route exact path="/portfolio/:id" render={props => <ProjectSlice {...props} status={status} />} />
+                                                                                    <Route exact path="/portfolio/:id/:name" render={props => <SinglePortfolio {...props} status={status} />} />
                                                                                     <Route render={props => <NotFound {...props} status={status} />} />
                                                                                 </Switch>
                                                                             </MainContent>
