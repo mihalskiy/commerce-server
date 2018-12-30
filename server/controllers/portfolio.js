@@ -1,4 +1,5 @@
 const portfolio = require('../models').Portfolio;
+const portfolioItem = require('../models').PortfolioItem;
 const senderMail = require('../mail/mail.service').mail;
 
 
@@ -19,29 +20,35 @@ module.exports = {
 
     list(req, res) {
         return portfolio
-            .findAll({})
-            .then((orders) => res.status(200).send(orders))
+            .findAll({
+                include: [{
+                    all: true,
+                    nested: true,
+                    model: portfolioItem
+                }]
+            })
+            .then((portfolios) => res.status(200).send(portfolios))
             .catch((error) => res.status(400).send(error));
     },
-
-    /*retrieve(req, res) {
-        return Order
-            .findById(req.params.todoId, {
+    retrieveById(req, res) {
+        return portfolio
+            .findById(req.params.id, {
                 include: [{
-                    model: TodoItem,
-                    as: 'todoItems',
-                }],
+                    all: true,
+                    nested: true,
+                    model: portfolioItem
+                }]
             })
-            .then((todo) => {
-                if (!todo) {
+            .then((portfolio) => {
+                if (!portfolio) {
                     return res.status(404).send({
-                        message: 'Todo Not Found',
+                        message: 'Portfolio Not Found',
                     });
                 }
-                return res.status(200).send(todo);
+                return res.status(200).send(portfolio);
             })
             .catch((error) => res.status(400).send(error));
-    },*/
+    },
 
     /*update(req, res) {
         return Todo
@@ -84,3 +91,5 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },*/
 };
+
+

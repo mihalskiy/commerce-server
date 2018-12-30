@@ -6,7 +6,7 @@ import { Media } from '../utils/StyleUtils';
 const Footer = () => (
   <FooterContainer role="contentinfo">
     <FooterDate>{`© ${new Date().getFullYear()}`} Веб студия Nurmaget.</FooterDate>
-    <Anchor secondary href="/humans.txt">Создания веб сайтов под ключ</Anchor>
+    <Anchor secondary href="/humans.txt">Создания веб сайтов под ключ под ключ</Anchor>
   </FooterContainer>
 );
 

@@ -13,7 +13,10 @@ const actionTypes = {
 export default actionTypes;
 
 export const  getPortfolio = () => {
-    return { type: 'GET_PORTFOLIO' }
+    return {
+        type: 'GET_PORTFOLIO',
+        loading: true
+    }
 };
 
 export const getPortfolioSuccess = (payload) => {

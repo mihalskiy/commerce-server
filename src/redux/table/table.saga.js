@@ -1,4 +1,5 @@
-import { put, takeLatest, all } from 'redux-saga/effects';
+import { put, takeLatest, call, all } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import {getTableSuccess} from './table.action';
 import actionTypes from "./table.action";
 

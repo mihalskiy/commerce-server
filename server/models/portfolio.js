@@ -5,10 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     url: DataTypes.STRING,
     description: DataTypes.STRING,
-    categoryList: DataTypes.TEXT
+    content: {
+      type: DataTypes.TEXT
+    },
   }, {});
   Portfolio.associate = function(models) {
-    // associations can be defined here
+    Portfolio.hasMany(models.PortfolioItem, {
+      foreignKey: 'portfolioId',
+      as: 'PortfolioItems',
+    });
   };
   return Portfolio;
 };

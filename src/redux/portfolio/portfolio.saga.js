@@ -1,4 +1,5 @@
-import { put, takeLatest, all } from 'redux-saga/effects';
+import { put, takeLatest, call, all } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import actionTypes, {getPortfolioSuccess, failedPortfolio} from "./portfolio.action";
 import {Api} from "./Api";
 import {fetchFailedAction} from "../order/order.action";
@@ -6,7 +7,7 @@ import {fetchFailedAction} from "../order/order.action";
 function* getPortfolio() {
     try {
         const result = yield Api.getPortfolioList();
-        yield put(getPortfolioSuccess(result));
+        yield put(getPortfolioSuccess({payload: {result}}));
     } catch (e) {
         yield put(failedPortfolio(e));
     }

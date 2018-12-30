@@ -141,8 +141,8 @@ class App extends Component {
                                                                                     <Route exact path="/" render={props => <Home {...props} status={status} />} />
                                                                                     <Route path="/contact" render={props => <Contact {...props} status={status} />} />
                                                                                     <Route path="/price" render={props => <ProjectSPR {...props} status={status} />} />
-                                                                                    <Route path="/portfolio" render={props => <Portfolio {...props} status={status} />} />
-                                                                                    <Route path="/portfolio/:id" render={props => <ProjectSlice {...props} status={status} />} />
+                                                                                    <Route exact path="/portfolio" render={props => <Portfolio {...props} status={status} />} />
+                                                                                    <Route exact path="/portfolio/:id" render={props => <ProjectSlice {...props} status={status} />} />
                                                                                     <Route render={props => <NotFound {...props} status={status} />} />
                                                                                 </Switch>
                                                                             </MainContent>

@@ -14,6 +14,7 @@ module.exports = (app) => {
   app.delete('/api/order/:id', ordersController.destroy);
 
   app.get('/api/portfolio', portfolioController.list);
+  app.get('/api/portfolio/:id', portfolioController.retrieveById);
 
   /*app.post('/api/todos/:todoId/items', orderItemsController.create);
   app.put('/api/todos/:todoId/items/:todoItemId', orderItemsController.update);

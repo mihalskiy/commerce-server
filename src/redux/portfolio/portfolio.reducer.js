@@ -7,7 +7,7 @@ import Immutable from "seamless-immutable";
 export const INITIAL_STATE = Immutable(initialState.portfolio);
 
 
-function reducer(state = initialState.portfolio, action = {}) {
+function reducer(state = INITIAL_STATE, action = {}) {
     const { type = '', payload = {} } = action;
     switch (type) {
         case PortfolioAction.GET_PORTFOLIO :
