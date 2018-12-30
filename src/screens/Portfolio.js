@@ -5,6 +5,7 @@ import ScrollToTop from '../utils/ScrollToTop';
 import Footer from '../components/Footer';
 import NavPortfolio from './NavPortfolio';
 import PortfolioList from './PortfolioList';
+import SinglePortfolio from './SinglePortfolio'
 import styled from 'styled-components';
 import {
     ProjectContainer, ProjectSection, ProjectSectionContent, ProjectBackground} from '../components/Project';
@@ -12,7 +13,7 @@ import backgroundSpr from '../assets/sky.jpg';
 import backgroundSprLarge from '../assets/sky.jpg';
 import backgroundSprPlaceholder from '../assets/project-large.png';
 import {bindActionCreators} from "redux";
-import {getPortfolio, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
+import {getPortfolioList, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
 import Loader from '../components/Loader'
 const prerender = window.location.port === '45678';
 
@@ -21,7 +22,7 @@ const title = 'ПРИМЕРЫ НАШИХ РАБОТ';
 const description = 'Лучше всего о нашем качестве и надежности расскажет наше портфолио. Для каждого Заказчика мы стараемся подобрать оптимальную схему взаимоотношений, одинаково внимательно относясь как к крупным клиентам, так и к небольшим заказам. Наш Заказчик обращается к нам при следующей регистрации или перерегистрации, и это - наш главный показатель качества и конкурентноспособности.';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getPortfolio,
+    getPortfolioList,
     getPortfolioSuccess
 }, dispatch);
 
@@ -31,7 +32,7 @@ class Portfolio extends Component {
         super(props);
         this.state = {
         };
-        this.props.getPortfolio();
+        this.props.getPortfolioList();
 
 
     }
@@ -58,6 +59,11 @@ class Portfolio extends Component {
     render() {
 
         const {status, loading, portfolio} = this.props;
+
+        if (portfolio) {
+
+        }
+
         return (
             <React.Fragment>
                 <ScrollToTop status={status}/>
