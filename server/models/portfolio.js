@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     content: {
       type: DataTypes.TEXT
     },
+    type: {
+      type: DataTypes.TEXT
+    },
   }, {});
   Portfolio.associate = function(models) {
     Portfolio.hasMany(models.PortfolioItem, {

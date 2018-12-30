@@ -15,12 +15,15 @@ module.exports = {
         type: Sequelize.STRING
       },
       content: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
+        type: Sequelize.TEXT
       },
       url: {
         type: Sequelize.STRING
       },
       description: {
+        type: Sequelize.STRING
+      },
+      type: {
         type: Sequelize.STRING
       },
       createdAt: {
