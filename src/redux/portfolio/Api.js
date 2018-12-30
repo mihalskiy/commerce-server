@@ -1,4 +1,4 @@
-const apiInsertNewOrder =  'http://localhost:8000' + '/api/portfolio';
+const apiInsertNewOrder =  'https://nurmaget.com' + '/api/portfolio';
 
 async function getPortfolioList() {
     try {
