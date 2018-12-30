@@ -1,9 +1,12 @@
 const http = require('http');
 const https = require('https');
+var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const fs  = require('fs');
-const app = require('../server'); // The express app we just created
+const app = require('../server');
 
-app.all('*', ensureSecure); // at top of routing calls
+app.all('*', ensureSecure);
+app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+
 
 
 const http_port = parseInt(process.env.HTTP_PORT, 10) || 80;
