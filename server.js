@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-var sm = require('sitemap')
+const sm = require('sitemap')
     , fs = require('fs');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -30,7 +30,7 @@ const app = express()
     ]
 });
 
-fs.writeFileSync("./public/sitemap.xml", sitemap.toString());
+fs.writeFileSync("./build/public/sitemap.xml", sitemap.toString());
 
 
 app.get('/sitemap.xml', function(req, res) {
