@@ -5,7 +5,7 @@
   "main": "server.js",
   "homepage": "http://localhost:8000",
   "private": true,
-  "proxy": "http://ec2-54-190-128-187.us-west-2.compute.amazonaws.com",
+  "proxy": "http://localhost:8000",
   "scripts": {
     "//prestart": "npm run validateSwagger && npm run fix",
     "//db:create": "node_modules/.bin/create_database",
