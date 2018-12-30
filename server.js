@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const SitemapGenerator = require('sitemap-generator');
+var sm = require('sitemap')
+    , fs = require('fs');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -16,7 +17,31 @@ const myDatabase = new Sequelize(db.database, db.username, db.password, {
 const sequelizeSessionStore = new SessionStore({
     db: myDatabase,
 });
-const app = express();
+const app = express()
+    , sitemap = sm.createSitemap ({
+    hostname: 'https://nurmaget.com',
+    cacheTime: 600000,        // 600 sec - cache purge period
+    urls: [
+        { url: '/',  changefreq: 'daily', priority: 0.2 },
+        { url: '/contact/',  changefreq: 'daily', priority: 0.2 },
+        { url: '/price/',  changefreq: 'monthly',  priority: 0.2 },
+        { url: '/portfolio/', img: "nurmaget.com",  priority: 0.4},    // changefreq: 'weekly',  priority: 0.5
+        { url: '/news/',   img: "nurmaget.com" }
+    ]
+});
+
+fs.writeFileSync("./public/sitemap.xml", sitemap.toString());
+
+
+app.get('/sitemap.xml', function(req, res) {
+    sitemap.toXML( function (err, xml) {
+        if (err) {
+            return res.status(500).end();
+        }
+        res.header('Content-Type', 'application/xml');
+        res.send( xml );
+    });
+});
 
 app.all('*', ensureSecure);
 
@@ -71,13 +96,5 @@ function ensureSecure(req, res, next){
     // res.redirect('https://' + req.host + req.url);
     res.redirect('https://' + req.hostname + req.url);
 }
-
-var generator = SitemapGenerator('https://nurmaget.com/', {
-    maxDepth: 0,
-    filepath: './sitemap.xml',
-    maxEntriesPerFile: 50000,
-    stripQuerystring: true
-});
-generator.start();
 
 module.exports = app;

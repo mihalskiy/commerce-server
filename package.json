@@ -69,7 +69,7 @@
     "seamless-immutable": "^7.1.4",
     "sequelize": "^4.0.0",
     "sequelize-migration-pg-extras": "^1.0.1",
-    "sitemap-generator": "^8.3.2",
+    "sitemap": "^2.1.0",
     "styled-components": "^4.0.3",
     "swagger-express-middleware": "^1.0.0-alpha.12",
     "swagger-ui-express": "^2.0.15",
