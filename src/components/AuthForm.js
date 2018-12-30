@@ -74,7 +74,7 @@ class AuthForm extends Component {
                                     delay={400}
                                     icon="send"
                                     type="submit">
-                                    {status}
+                                    Войти
                                 </AuthButton>
                             </ButtonGroup>
                             <AuthSocial>
@@ -131,12 +131,12 @@ class AuthForm extends Component {
                             </ButtonGroup>
                             <AuthSocial>
                                 <AuthDescription>Зарегистрироваться с помощью соцсетей</AuthDescription>
-                                <Link to={'https://nurmaget.com/facebook'} className="socialLink">
+                                <Link to={'/facebook'} className="socialLink">
                                     <FacebookIcon>
                                         {facebookIcon}
                                     </FacebookIcon>
                                 </Link>
-                                <Link to={'https://nurmaget.com/google'} className="socialLink">
+                                <Link to={'/google'} className="socialLink">
                                     <GoogleIcon>
                                         {googleIcon}
                                     </GoogleIcon>

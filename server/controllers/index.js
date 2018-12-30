@@ -1,7 +1,7 @@
 const orders = require('./orders');
-const orderItems = require('./orderItems');
+const portfolio = require('./portfolio');
 
 module.exports = {
   orders,
-  orderItems,
+  portfolio,
 };

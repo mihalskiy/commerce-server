@@ -10,7 +10,7 @@ import {
 import Home from '../screens/Home'
 import ProjectSPR from '../screens/ProjectSPR'
 import Contact from '../screens/Contact'
-import ProjectPortfolio from '../screens/ProjectPortfolio'
+import Portfolio from '../screens/Portfolio'
 import ProjectSlice from '../screens/ProjectSlice'
 import NotFound from '../screens/NotFound'
 import { Helmet } from "react-helmet";
@@ -25,7 +25,7 @@ import GothamMedium from '../fonts/gotham-medium.woff2';
 //const Home = asyncComponent(props => import("../screens/Home"));
 // const Contact = asyncComponent(props => import("../screens/Contact"));
 // const ProjectSPR = asyncComponent(props => import("../screens/ProjectSPR"));
-// const ProjectPortfolio = asyncComponent(props => import("../screens/ProjectPortfolio"));
+// const Portfolio = asyncComponent(props => import("../screens/Portfolio"));
 // const ProjectSlice = asyncComponent(props => import("../screens/ProjectSlice"));
 // const NotFound = asyncComponent(props => import("../screens/NotFound"));
 
@@ -141,8 +141,8 @@ class App extends Component {
                                                                                     <Route exact path="/" render={props => <Home {...props} status={status} />} />
                                                                                     <Route path="/contact" render={props => <Contact {...props} status={status} />} />
                                                                                     <Route path="/price" render={props => <ProjectSPR {...props} status={status} />} />
-                                                                                    <Route path="/portfolio" render={props => <ProjectPortfolio {...props} status={status} />} />
-                                                                                    <Route path="/slice" render={props => <ProjectSlice {...props} status={status} />} />
+                                                                                    <Route exact path="/portfolio" render={props => <Portfolio {...props} status={status} />} />
+                                                                                    <Route exact path="/portfolio/:id" render={props => <ProjectSlice {...props} status={status} />} />
                                                                                     <Route render={props => <NotFound {...props} status={status} />} />
                                                                                 </Switch>
                                                                             </MainContent>

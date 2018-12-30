@@ -29,11 +29,12 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 class ProjectSPR extends Component {
     render () {
+        const {priceInfo} = this.props;
         return (
             <React.Fragment>
                 <ScrollToTop status={this.props.status} />
                 <Helmet>
-                    <title>{`Создания веб сайтов | ${title}`}</title>
+                    <title>{`Создания веб сайтов под ключ | ${title}`}</title>
                     <meta name="description" content={description} />
                 </Helmet>
                 <ProjectContainer>
@@ -50,13 +51,13 @@ class ProjectSPR extends Component {
                     />
                     <ProjectSection>
                         <ProjectSectionContent>
-                            {this.props.priceInfo &&
+                            {priceInfo &&
                                 <ProjectPriceTable
 
-                                    name={this.props.priceInfo}
-                                    currency={this.props.priceInfo}
-                                    price={this.props.priceInfo}
-                                    cent={this.props.priceInfo}
+                                    name={priceInfo}
+                                    currency={priceInfo}
+                                    price={priceInfo}
+                                    cent={priceInfo}
                                     title={'sdgfsdg'}
                                     fields={roles}
                                 />

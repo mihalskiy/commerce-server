@@ -6,6 +6,9 @@ const initialState = {
     },
     order: {
         loading: false
+    },
+    portfolio: {
+        loading: false
     }
 };
 

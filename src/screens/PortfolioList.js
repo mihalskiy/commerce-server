@@ -1,42 +1,67 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {LinkButton, ProjectHeaderButton} from '../components/Button'
 import styled from 'styled-components';
 
 const theme = {
-    main: "https://picsum.photos/400/180",
-    progress: "25%"
+    main: "https://picsum.photos/1920/1020",
+    progress: "87%"
 };
 
-let PortfolioList = ({bg, title, description, list}) =>(
-  <PortfolioListContent theme={{main: bg}}>
-      <PortfolioListItem>
-
-          <PortfolioListItemAlign>
-              <PortfolioListTitle>{title}</PortfolioListTitle>
-              <PortfolioListSubTitle> {description} </PortfolioListSubTitle>
-          </PortfolioListItemAlign>
-          <PortfolioListItemAlign>
-              {list && list.map((list, index) => (
-                  <PortfolioTable number={list.id} nume={list.name} progress={list.progress} key={`role_${index}`}/>
-              ))}
-          </PortfolioListItemAlign>
-      </PortfolioListItem>
-  </PortfolioListContent>
-
-);
-
 let PortfolioTable = ({number, name, progress}) => (
-        <PortfolioTableContent>
-            <PortfolioTableNum>{number}</PortfolioTableNum>
-            <PortfolioTableTitle>{name}</PortfolioTableTitle>
-            <PortfolioTableProgressAlign>
-                <PortfolioTableProgress>
-                    <PortfolioTableProgressItem theme={{progress: progress + '%'}} />
-                </PortfolioTableProgress>
-                <PortfolioTableNum>{progress}%</PortfolioTableNum>
-            </PortfolioTableProgressAlign>
-
-        </PortfolioTableContent>
+    <PortfolioTableContent>
+        <PortfolioTableNum>{number}</PortfolioTableNum>
+        <PortfolioTableTitle>{name}</PortfolioTableTitle>
+        <PortfolioTableProgressAlign>
+            <PortfolioTableProgress>
+                <PortfolioTableProgressItem theme={{progress: progress + '%' || theme.progress}} />
+            </PortfolioTableProgress>
+            <PortfolioTableNum>{progress}%</PortfolioTableNum>
+        </PortfolioTableProgressAlign>
+    </PortfolioTableContent>
 );
+
+class PortfolioList extends React.Component {
+    render() {
+        const {id, bg, title, description, list, url} = this.props;
+debugger
+        return (
+            <React.Fragment>
+                    <PortfolioListContent theme={{main: bg || theme.main}}>
+
+                        <PortfolioListItem>
+
+                            <PortfolioDetail>
+                                <PortfolioListItemAlign>
+                                    <PortfolioListTitle>{title}</PortfolioListTitle>
+                                    <PortfolioListSubTitle> {description} </PortfolioListSubTitle>
+                                </PortfolioListItemAlign>
+                                <PortfolioListItemAlign>
+                                    {list && list.map((list, index) => (
+                                        <PortfolioTable number={list.id} name={list.name} progress={list.progress} key={`role_${index}`}/>
+                                    ))}
+                                </PortfolioListItemAlign>
+                            </PortfolioDetail>
+
+                            <PortfolioListButton>
+                                <LinkButton
+                                    delay={400}
+                                    icon="send"
+                                    sending={false}
+                                    loading={false}
+                                    href={`/portfolio/${id}`}
+                                    status={'entering'}>
+
+                                    Перейти
+                                </LinkButton>
+                            </PortfolioListButton>
+                        </PortfolioListItem>
+                    </PortfolioListContent>
+
+            </React.Fragment>
+        )
+    }
+}
 
 
 export const PortfolioTableProgressAlign = styled.div`
@@ -84,6 +109,14 @@ export const PortfolioTableContent = styled.div`
   padding: 10px 0;
 `;
 
+const PortfolioDetail = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const PortfolioListContent = styled.div`
   max-width: 475px;
   max-height: 300px;
@@ -105,14 +138,27 @@ export const PortfolioListItem = styled.div`
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  background: #2b2937;
   background: rgba(0,0,0,0.5);
   border-radius: 25px;
   justify-content: space-between;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   padding: 10px 25px;
+  position: relative;
+`;
+
+const PortfolioListButton = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: flex-end;
+  width: 100%;
+  
+  button {
+  height: 40px;
+  }
 `
 
 export const PortfolioListTitle = styled.h1`

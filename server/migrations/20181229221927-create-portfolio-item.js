@@ -1,32 +1,27 @@
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Portfolios', {
+    return queryInterface.createTable('PortfolioItems', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content: {
+      name: {
         type: Sequelize.STRING
       },
-      status: {
-        type: Sequelize.STRING
-      },
-      type: {
-        type: Sequelize.STRING
-      },
-      like_count: {
+      progress: {
         type: Sequelize.INTEGER
       },
-      has_article: {
-        type: Sequelize.BOOLEAN
-      },
-      title: {
-        type: Sequelize.STRING
-      },
-      contnet: {
-        type: Sequelize.TEXT
+      portfolioId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Portfolios',
+          key: 'id',
+          as: 'portfolioId',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Portfolios');
+    return queryInterface.dropTable('PortfolioItems');
   }
 };

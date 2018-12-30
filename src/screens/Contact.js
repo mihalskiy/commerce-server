@@ -212,7 +212,6 @@ class Contact extends PureComponent {
 }
 
 const mapStateToProps = function (state) {
-                            debugger
     return {
         complete: state.order.complate,
         loading: state.order.loading,

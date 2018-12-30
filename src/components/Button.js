@@ -56,6 +56,9 @@ const ButtonLoader = styled(Loader)`
 
 const ButtonContainer = styled.button`
   background: none;
+${props => !props.secondary && `
+  background: ${ColorTint(props.theme.colorPrimary(1), 0.2)};
+  `}
   height: 56px;
   padding: 0 26px;
   border: 0;
