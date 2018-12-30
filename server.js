@@ -17,6 +17,8 @@ const sequelizeSessionStore = new SessionStore({
 });
 const app = express();
 
+app.all('*', ensureSecure);
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL);
     res.header("Access-Control-Allow-Credentials", "true");
@@ -59,5 +61,14 @@ app.use('*', (req, res) => {
 /*app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
 }));*/
+function ensureSecure(req, res, next){
+    if(req.secure){
+        // OK, continue
+        return next();
+    };
+    // handle port numbers if you need non defaults
+    // res.redirect('https://' + req.host + req.url);
+    res.redirect('https://' + req.hostname + req.url);
+}
 
 module.exports = app;
