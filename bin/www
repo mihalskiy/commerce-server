@@ -6,7 +6,7 @@ const app = require('../server');
 
 
 
-const http_port = parseInt(process.env.HTTP_PORT, 10) || 80;
+const http_port = parseInt(process.env.HTTP_PORT, 10) || 8080;
 const https_port = parseInt(process.env.HTTPS_PORT, 10) || 443;
 app.set('port', https_port);
 

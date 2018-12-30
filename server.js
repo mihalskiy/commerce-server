@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const SitemapGenerator = require('sitemap-generator');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -70,5 +71,13 @@ function ensureSecure(req, res, next){
     // res.redirect('https://' + req.host + req.url);
     res.redirect('https://' + req.hostname + req.url);
 }
+
+var generator = SitemapGenerator('https://nurmaget.com/', {
+    maxDepth: 0,
+    filepath: './sitemap.xml',
+    maxEntriesPerFile: 50000,
+    stripQuerystring: true
+});
+generator.start();
 
 module.exports = app;
