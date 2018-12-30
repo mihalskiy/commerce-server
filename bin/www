@@ -1,11 +1,8 @@
 const http = require('http');
 const https = require('https');
-var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const fs  = require('fs');
 const app = require('../server');
 
-app.all('*', ensureSecure);
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 
 
 
@@ -28,13 +25,3 @@ http_server.listen(http_port, () => {
 https_server.listen(https_port, () => {
   console.log(`The server is running at localhost:${https_port}` + ' ' + app.get('port'));
 });
-
-function ensureSecure(req, res, next){
-  if(req.secure){
-    // OK, continue
-    return next();
-  };
-  // handle port numbers if you need non defaults
-  // res.redirect('https://' + req.host + req.url);
-  res.redirect('https://' + req.hostname + req.url);
-}
