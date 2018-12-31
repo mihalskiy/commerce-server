@@ -19,18 +19,19 @@ const sequelizeSessionStore = new SessionStore({
 });
 const app = express()
     , sitemap = sm.createSitemap ({
-    hostname: 'https://nurmaget.com',
+    hostname: 'http://localhost:3000',
     cacheTime: 600000,        // 600 sec - cache purge period
     urls: [
-        { url: '/',  changefreq: 'daily', priority: 0.2 },
-        { url: '/contact/',  changefreq: 'daily', priority: 0.2 },
-        { url: '/price/',  changefreq: 'monthly',  priority: 0.2 },
-        { url: '/portfolio/', img: "nurmaget.com",  priority: 0.4},    // changefreq: 'weekly',  priority: 0.5
+        { url: '/',  changefreq: 'weekly', priority: 0.8 },
+        { url: '/contact/',  changefreq: 'weekly', priority: 0.8 },
+        { url: '/price/',  changefreq: 'monthly',  priority: 0.8 },
+        { url: '/portfolio/', changefreq: 'monthly',  priority: 0.8 },    // changefreq: 'weekly',  priority: 0.5
+        { url: '/portfolio/id', changefreq: 'monthly',  priority: 0.8 },    // changefreq: 'weekly',  priority: 0.5
         { url: '/news/',   img: "nurmaget.com" }
     ]
 });
 
-fs.writeFileSync("./build/public/sitemap.xml", sitemap.toString());
+fs.writeFileSync("./build/sitemap.xml", sitemap.toString());
 
 
 app.get('/sitemap.xml', function(req, res) {
@@ -43,7 +44,7 @@ app.get('/sitemap.xml', function(req, res) {
     });
 });
 
-app.all('*', ensureSecure);
+//app.all('*', ensureSecure);
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL);
@@ -87,7 +88,7 @@ app.use('*', (req, res) => {
 /*app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
 }));*/
-function ensureSecure(req, res, next){
+/*function ensureSecure(req, res, next){
     if(req.secure){
         // OK, continue
         return next();
@@ -95,6 +96,6 @@ function ensureSecure(req, res, next){
     // handle port numbers if you need non defaults
     // res.redirect('https://' + req.host + req.url);
     res.redirect('https://' + req.hostname + req.url);
-}
+}*/
 
 module.exports = app;

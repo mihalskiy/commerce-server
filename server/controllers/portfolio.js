@@ -19,16 +19,39 @@ module.exports = {
     },*/
 
     list(req, res) {
-        return portfolio
-            .findAll({
-                include: [{
-                    all: true,
-                    nested: true,
-                    model: portfolioItem
-                }]
+        console.log('REQ.PARAMS.ID', req.query.type);
+        let limit = 10;   // number of records per page
+        let offset = 0;
+
+        portfolio.findAndCountAll({
+
+        })
+            .then((data) => {
+                const {page, type} = req.query;
+                const pages = Math.ceil(data.count / limit);
+                offset = limit * (page ? page : 1 - 1);
+
+                portfolio.findAll({
+                    include: [{
+                        all: true,
+                        nested: true,
+                        model: portfolioItem
+                    }],
+                    where: {
+                        type: type || 'lending',
+
+                    },
+                    limit: limit,
+                    offset: offset,
+                    $sort: { id: 1 }
+                })
+                    .then((users) => {
+                        res.status(200).json({'result': users, 'count': data.count, 'pages': pages});
+                    });
             })
-            .then((portfolios) => res.status(200).send(portfolios))
-            .catch((error) => res.status(400).send(error));
+            .catch(function (error) {
+                res.status(500).send('Internal Server Error');
+            });
     },
     retrieveById(req, res) {
         return portfolio
