@@ -15,7 +15,7 @@ module.exports = {
 
     return queryInterface.bulkInsert('Portfolios', [
       {
-        bgColor: 'https://picsum.photos/900/180',
+        bgImage: 'https://picsum.photos/900/180',
         title: 'Christen',
         url: 'nascetur.ridiculus.mus@nec.org',
         type: 'lending',
@@ -25,7 +25,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/720/360',
+        bgImage: 'https://picsum.photos/720/360',
         title: 'Christen',
         type: 'business_card',
         url: 'nascetur.ridiculus.mus@nec.org',
@@ -36,7 +36,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/1020',
+        bgImage: 'https://picsum.photos/900/1020',
         title: 'Christen',
         //type: 'Fiona',
         url: 'nascetur.ridiculus.mus@nec.org',
@@ -47,7 +47,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/768',
+        bgImage: 'https://picsum.photos/900/768',
         title: 'Jerome',
         type: 'store',
         url: 'amet.consectetuer@urnanec.com',
@@ -58,7 +58,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/760',
+        bgImage: 'https://picsum.photos/900/760',
         title: 'Stacey',
         type: 'business_card',
         url: 'convallis.ligula@magnaPraesent.ca',
@@ -69,7 +69,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/769',
+        bgImage: 'https://picsum.photos/900/769',
         title: 'Tate',
         type: 'Bertha',
         url: 'lacinia@commodoauctorvelit.edu',
@@ -80,7 +80,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/740',
+        bgImage: 'https://picsum.photos/900/740',
         title: 'Ulla',
         type: 'Sonia',
         url: 'sollicitudin@arcuCurabitur.org',
@@ -91,7 +91,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/749',
+        bgImage: 'https://picsum.photos/900/749',
         title: 'Fulton',
         type: 'store',
         url: 'dapibus.ligula.Aliquam@velsapienimperdiet.ca',
@@ -102,7 +102,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/741',
+        bgImage: 'https://picsum.photos/900/741',
         title: 'Hakeem',
         type: 'Nichole',
         url: 'Sed.diam@nectellusNunc.org',
@@ -113,7 +113,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/850',
+        bgImage: 'https://picsum.photos/900/850',
         title: 'Cara',
         type: 'business_card',
         url: 'enim.nec.tempus@rutrumFusce.com',
@@ -124,7 +124,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/859',
+        bgImage: 'https://picsum.photos/900/859',
         title: 'Myra',
         type: 'store',
         url: 'lobortis@fermentum.com',
@@ -135,7 +135,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/870',
+        bgImage: 'https://picsum.photos/900/870',
         title: 'Walker',
         type: 'Tamekah',
         url: 'Integer@lacusCras.ca',
@@ -146,7 +146,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/810',
+        bgImage: 'https://picsum.photos/900/810',
         title: 'Carlos',
         type: 'business_card',
         url: 'et@Pellentesquehabitant.ca',
@@ -157,7 +157,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/830',
+        bgImage: 'https://picsum.photos/900/830',
         title: 'Elizabeth',
         type: 'Clare',
         url: 'aliquet.sem@dapibusligulaAliquam.net',
@@ -168,7 +168,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/880',
+        bgImage: 'https://picsum.photos/900/880',
         title: 'Uta',
         type: 'business_card',
         url: 'tortor.dictum.eu@eu.com',
@@ -179,7 +179,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/890',
+        bgImage: 'https://picsum.photos/900/890',
         title: 'Ray',
         type: 'business_card',
         url: 'mauris@blanditcongueIn.edu',
@@ -190,7 +190,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/870',
+        bgImage: 'https://picsum.photos/900/870',
         title: 'TaShya',
         type: 'Callie',
         url: 'Curae.Phasellus@duiCras.net',
@@ -201,7 +201,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/810',
+        bgImage: 'https://picsum.photos/900/810',
         title: 'Oprah',
         type: 'business_card',
         url: 'lectus.sit@vestibulum.org',
@@ -212,7 +212,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/830',
+        bgImage: 'https://picsum.photos/900/830',
         title: 'Upton',
         type: 'business_card',
         url: 'pharetra.ut.pharetra@scelerisqueloremipsum.edu',
@@ -223,7 +223,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/750',
+        bgImage: 'https://picsum.photos/900/750',
         title: 'Kirsten',
         type: 'ew wev wrrg rgr rhgr',
         url: 'Quisque@adipiscing.net',
@@ -234,7 +234,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/850',
+        bgImage: 'https://picsum.photos/900/850',
         title: 'Destiny',
         type: 'Candice',
         url: 'arcu.et@pharetranibhAliquam.org',
@@ -245,7 +245,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/950',
+        bgImage: 'https://picsum.photos/900/950',
         title: 'Georgia',
         type: 'business_card',
         url: 'feugiat@dapibusligula.ca',
@@ -256,7 +256,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/450',
+        bgImage: 'https://picsum.photos/900/450',
         title: 'Troy',
         type: 'lending',
         url: 'sapien.Nunc@aliquet.co.uk',
@@ -267,7 +267,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/350',
+        bgImage: 'https://picsum.photos/900/350',
         title: 'Cain',
         type: 'lending',
         url: 'Duis.risus.odio@nulla.ca',
@@ -278,7 +278,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/250',
+        bgImage: 'https://picsum.photos/900/250',
         title: 'Kessie',
         type: 'business_card',
         url: 'iaculis.enim@acipsum.edu',
@@ -289,7 +289,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/550',
+        bgImage: 'https://picsum.photos/900/550',
         title: 'Samuel',
         type: 'lending',
         url: 'nec@eratVivamusnisi.com',
@@ -300,7 +300,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/950',
+        bgImage: 'https://picsum.photos/900/950',
         title: 'Xerxes',
         type: 'lending',
         url: 'per.conubia.nostra@commodoat.co.uk',
@@ -311,7 +311,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/910',
+        bgImage: 'https://picsum.photos/900/910',
         title: 'Jordan',
         type: 'lending',
         url: 'vitae.mauris.sit@quispede.ca',
@@ -322,7 +322,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/920',
+        bgImage: 'https://picsum.photos/900/920',
         title: 'Kadeem',
         type: 'Claire',
         url: 'ut@utdolor.ca',
@@ -333,7 +333,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/930',
+        bgImage: 'https://picsum.photos/900/930',
         title: 'Hilel',
         type: 'business_card',
         url: 'dictum.ultricies@feugiat.co.uk',
@@ -344,7 +344,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/940',
+        bgImage: 'https://picsum.photos/900/940',
         title: 'Oleg',
         type: 'business_card',
         url: 'consequat.lectus@nullamagna.co.uk',
@@ -355,7 +355,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/960',
+        bgImage: 'https://picsum.photos/900/960',
         title: 'Urielle',
         type: 'lending',
         url: 'luctus@nislsemconsequat.edu',
@@ -366,7 +366,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor:'https://picsum.photos/900/990',
+        bgImage:'https://picsum.photos/900/990',
         title: 'Silas',
         type: 'lending',
         url: 'dolor.dapibus@egestasblandit.com',
@@ -377,7 +377,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/980',
+        bgImage: 'https://picsum.photos/900/980',
         title: 'Cara',
         type: 'business_card',
         url: 'posuere.at@Vestibulumanteipsum.co.uk',
@@ -388,7 +388,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/580',
+        bgImage: 'https://picsum.photos/900/580',
         title: 'Amery',
         type: 'lending',
         url: 'ultricies@lectusNullamsuscipit.com',
@@ -399,7 +399,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/530',
+        bgImage: 'https://picsum.photos/900/530',
         title: 'James',
         type: 'lending',
         url: 'tincidunt.nunc@Seddiam.org',
@@ -410,7 +410,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/520',
+        bgImage: 'https://picsum.photos/900/520',
         title: 'Nicole',
         type: 'business_card',
         url: 'amet.massa.Quisque@feugiat.net',
@@ -421,7 +421,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/510',
+        bgImage: 'https://picsum.photos/900/510',
         title: 'Alyssa',
         type: 'business_card',
         url: 'Maecenas.malesuada@elit.ca',
@@ -432,7 +432,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/550',
+        bgImage: 'https://picsum.photos/900/550',
         title: 'Rhoda',
         type: 'business_card',
         url: 'sit.amet@luctus.co.uk',
@@ -443,7 +443,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/590',
+        bgImage: 'https://picsum.photos/900/590',
         title: 'Colleen',
         type: 'business_card',
         url: 'urna.suscipit@lectusCumsociis.edu',
@@ -454,7 +454,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/570',
+        bgImage: 'https://picsum.photos/900/570',
         title: 'Octavia',
         type: 'Karleigh',
         url: 'nec@etlibero.com',
@@ -465,7 +465,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: '(922) 671-4762',
+        bgImage: '(922) 671-4762',
         title: 'Aretha',
         type: 'Gretchen',
         url: 'Cras.interdum@pedePraesent.co.uk',
@@ -476,7 +476,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/530',
+        bgImage: 'https://picsum.photos/900/530',
         title: 'Mason',
         type: 'lending',
         url: 'vitae@a.net',
@@ -487,7 +487,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/410',
+        bgImage: 'https://picsum.photos/900/410',
         title: 'Emi',
         type: 'lending',
         url: 'diam.Sed@gravidanuncsed.org',
@@ -498,7 +498,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/420',
+        bgImage: 'https://picsum.photos/900/420',
         title: 'Keelie',
         type: 'store',
         url: 'amet.consectetuer@aliquetdiamSed.edu',
@@ -509,7 +509,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/430',
+        bgImage: 'https://picsum.photos/900/430',
         title: 'August',
         type: 'store',
         url: 'elit@Pellentesque.com',
@@ -520,7 +520,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/440',
+        bgImage: 'https://picsum.photos/900/440',
         title: 'Chiquita',
         type: 'store',
         url: 'Curabitur.ut@Morbinequetellus.ca',
@@ -531,7 +531,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/450',
+        bgImage: 'https://picsum.photos/900/450',
         title: 'Kaitlin',
         type: 'store',
         url: 'ipsum@gravida.org',
@@ -542,7 +542,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/460',
+        bgImage: 'https://picsum.photos/900/460',
         title: 'Malik',
         type: 'store',
         url: 'morbi.tristique.senectus@eleifendegestasSed.org',
@@ -553,7 +553,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/470',
+        bgImage: 'https://picsum.photos/900/470',
         title: 'Indigo',
         type: 'lending',
         url: 'enim.nec@consectetueradipiscing.ca',
@@ -564,7 +564,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/480',
+        bgImage: 'https://picsum.photos/900/480',
         title: 'Zorita',
         type: 'store',
         url: 'elit.Curabitur@nunc.ca',
@@ -575,7 +575,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/490',
+        bgImage: 'https://picsum.photos/900/490',
         title: 'Nomlanga',
         type: 'store',
         url: 'ipsum.Donec@ipsumnunc.co.uk',
@@ -586,7 +586,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: '(171) 246-6253',
+        bgImage: '(171) 246-6253',
         title: 'Montana',
         type: 'store',
         url: 'nulla@maurisidsapien.com',
@@ -597,7 +597,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/400',
+        bgImage: 'https://picsum.photos/900/400',
         title: 'Alma',
         type: 'store',
         url: 'nunc@dui.com',
@@ -608,7 +608,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/300',
+        bgImage: 'https://picsum.photos/900/300',
         title: 'lending',
         type: 'business_card',
         url: 'mauris.a@Suspendisse.co.uk',
@@ -619,7 +619,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/310',
+        bgImage: 'https://picsum.photos/900/310',
         title: 'lending',
         type: 'business_card',
         url: 'lobortis.Class.aptent@duiCraspellentesque.co.uk',
@@ -630,7 +630,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/320',
+        bgImage: 'https://picsum.photos/900/320',
         title: 'lending',
         type: 'business_card',
         url: 'leo@metusVivamus.org',
@@ -641,7 +641,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/330',
+        bgImage: 'https://picsum.photos/900/330',
         title: 'Xavier',
         type: 'business_card',
         url: 'Aenean.sed.pede@nequeIn.ca',
@@ -652,7 +652,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/340',
+        bgImage: 'https://picsum.photos/900/340',
         title: 'Yvonne',
         type: 'Vielka',
         url: 'magna.a@turpis.net',
@@ -663,7 +663,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/350',
+        bgImage: 'https://picsum.photos/900/350',
         title: 'Bradley',
         type: 'business_card',
         url: 'ac@estNunclaoreet.edu',
@@ -674,7 +674,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: '(848) 417-5513',
+        bgImage: '(848) 417-5513',
         title: 'Brandon',
         type: 'Bethany',
         url: 'ipsum.non@non.com',
@@ -685,7 +685,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/360',
+        bgImage: 'https://picsum.photos/900/360',
         title: 'Carter',
         type: 'Camille',
         url: 'enim@orci.net',
@@ -696,7 +696,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: '(160) 662-5385',
+        bgImage: '(160) 662-5385',
         title: 'Kevyn',
         type: 'business_card',
         url: 'elit.sed.consequat@lacusEtiam.edu',
@@ -707,7 +707,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/900/370',
+        bgImage: 'https://picsum.photos/900/370',
         title: 'Rhona',
         type: 'business_card',
         url: 'primis@elit.co.uk',
@@ -718,7 +718,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        bgColor: 'https://picsum.photos/700/180',
+        bgImage: 'https://picsum.photos/700/180',
         title: 'Wayne',
         type: 'Claire',
         url: 'nibh@enim.co.uk',

@@ -1,6 +1,8 @@
 const portfolio = require('../models').Portfolio;
 const portfolioItem = require('../models').PortfolioItem;
 const senderMail = require('../mail/mail.service').mail;
+const sequelize = require('sequelize');
+const _ = require('lodash');
 
 
 module.exports = {
@@ -19,16 +21,60 @@ module.exports = {
     },*/
 
     list(req, res) {
-        return portfolio
-            .findAll({
-                include: [{
-                    all: true,
-                    nested: true,
-                    model: portfolioItem
-                }]
+        let limit = 10;   // number of records per page
+        let offset = 0;
+        const {page, type} = req.query;
+
+        portfolio.findAll({
+            attributes: [
+                'type',
+                [sequelize.fn('COUNT', sequelize.col('type')), 'count'],
+            ],
+            group: 'type',
+            raw: true,
+            logging: true
+        })
+            .then((typeCount) => {
+                const count =  _.filter(typeCount, o => {
+                    return o.type == 'lending' || o.type == 'store' || o.type == 'business_card';
+
+                });
+                portfolio.findAndCountAll({
+                    where: {
+                        type: type,
+
+                    }
+                })
+                .then((data) => {
+                        const pages = Math.ceil(data.count / limit);
+                        offset = limit * (page - 1);
+
+                        portfolio.findAll({
+                            include: [{
+                                all: true,
+                                nested: true,
+                                model: portfolioItem
+                            }],
+                            where: {
+                                type: type,
+                            },
+                            limit: limit,
+                            offset: offset,
+                            $sort: { id: 1 }
+                        })
+                        .then((users) => {
+                            res.status(200).json({
+                                'result': users,
+                                'count': data.count,
+                                'pages': pages,
+                                'count_type': count
+                            });
+                        });
+                    })
             })
-            .then((portfolios) => res.status(200).send(portfolios))
-            .catch((error) => res.status(400).send(error));
+            .catch(function (error) {
+                res.status(500).send('Internal Server Error');
+            });
     },
     retrieveById(req, res) {
         return portfolio

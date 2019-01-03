@@ -23,7 +23,7 @@
     "predocker": "docker build -t $npm_package_config_engine .",
     "docker": "docker tag $npm_package_config_engine $npm_package_config_dockerHostUrl/$npm_package_config_engine:$npm_package_version",
     "postdocker": "docker push $npm_package_config_dockerHostUrl/$npm_package_config_engine:$npm_package_version",
-    "cleardocker": "docker volume prune"
+    "cleardocker": "docker volume prune && docker system prune -a"
   },
   "keywords": [],
   "author": "",
@@ -45,6 +45,7 @@
     "ios-inner-height": "^1.1.0",
     "js-yaml": "^3.11.0",
     "jsonwebtoken": "^8.2.0",
+    "lodash": "^4.17.11",
     "morgan": "^1.9.0",
     "nodemailer": "^4.7.0",
     "nodemailer-smtp-transport": "^2.7.4",
@@ -61,6 +62,7 @@
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-router-sitemap": "^1.1.5",
+    "react-router-sitemap-builder": "^1.1.1",
     "react-transition-group": "^2.5.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",

@@ -105,8 +105,7 @@ ${props => !props.secondary && `
   ${props => !props.disabled && !props.secondary && `
     &:hover,
     &:focus {
-      outline: none;
-      transform: scale(1.05);
+     
     }
 
     &:hover:after,

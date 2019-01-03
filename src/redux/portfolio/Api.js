@@ -1,8 +1,10 @@
 const apiInsertNewOrder =  'https://nurmaget.com' + '/api/portfolio';
 
-async function getPortfolioList() {
+async function getPortfolioList(params) {
     try {
-        let response = await fetch(apiInsertNewOrder, {
+
+        const {page, type} = params;
+        let response = await fetch(apiInsertNewOrder + '?page=' + page + '&type=' + type, {
             method: 'GET',
             crossDomain: true,
             mode: "cors", // or without this line
@@ -12,7 +14,19 @@ async function getPortfolioList() {
                 'Content-Type': 'application/json',
             }
         })
-        return await response.status === 200 ? response.json() : ['null'];
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data
+        })
+
+        return await {
+            data: response,
+            page: page,
+            type: type
+        }
+
     } catch (error) {
         console.error(`Error is : ${error}`);
     }

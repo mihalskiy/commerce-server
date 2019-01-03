@@ -16,10 +16,11 @@ const actionTypes = {
 
 export default actionTypes;
 
-export const  getPortfolioList = () => {
+export const  getPortfolioList = (payload) => {
     return {
         type: 'GET_PORTFOLIOS',
-        loading: true
+        loading: true,
+        payload
     }
 };
 
@@ -36,9 +37,9 @@ export const  getPortfolioById = (id) => {
 export const getPortfolioSuccess = (payload) => {
     return {
         type: GET_PORTFOLIOS_SUCCESS,
-        payload: {
-            portfolioList: payload
-        }
+         payload: {
+             payload
+         }
     }
 };
 

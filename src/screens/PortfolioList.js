@@ -2,10 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {LinkButton, ProjectHeaderButton} from '../components/Button'
 import styled from 'styled-components';
+import {bindActionCreators} from "redux";
+import {getPortfolioIdSuccess, getPortfolioList} from "../redux/portfolio/portfolio.action";
+import {connect} from "react-redux";
+import Loader from "./Portfolio";
 
 const theme = {
     main: "https://picsum.photos/1920/1020",
-    progress: "87%"
+    progress: "87"
 };
 
 let PortfolioTable = ({number, name, progress}) => (
@@ -14,7 +18,7 @@ let PortfolioTable = ({number, name, progress}) => (
         <PortfolioTableTitle>{name}</PortfolioTableTitle>
         <PortfolioTableProgressAlign>
             <PortfolioTableProgress>
-                <PortfolioTableProgressItem theme={{progress: progress + '%' || theme.progress}} />
+                <PortfolioTableProgressItem theme={{progress: progress ? progress : theme.progress + '%'}} />
             </PortfolioTableProgress>
             <PortfolioTableNum>{progress}%</PortfolioTableNum>
         </PortfolioTableProgressAlign>
@@ -23,41 +27,38 @@ let PortfolioTable = ({number, name, progress}) => (
 
 class PortfolioList extends React.Component {
     render() {
-        const {id, bg, title, description, list, url} = this.props;
-debugger
+        const {portfolioList} = this.props;
         return (
             <React.Fragment>
-                    <PortfolioListContent theme={{main: bg || theme.main}}>
+                <PortfolioListContent theme={{main: portfolioList.bgImage}}>
 
-                        <PortfolioListItem>
+                    <PortfolioListItem>
 
-                            <PortfolioDetail>
-                                <PortfolioListItemAlign>
-                                    <PortfolioListTitle>{title}</PortfolioListTitle>
-                                    <PortfolioListSubTitle> {description} </PortfolioListSubTitle>
-                                </PortfolioListItemAlign>
-                                <PortfolioListItemAlign>
-                                    {list && list.map((list, index) => (
-                                        <PortfolioTable number={list.id} name={list.name} progress={list.progress} key={`role_${index}`}/>
-                                    ))}
-                                </PortfolioListItemAlign>
-                            </PortfolioDetail>
+                        <PortfolioDetail>
+                            <PortfolioListItemAlign>
+                                <PortfolioListTitle>{portfolioList.title}</PortfolioListTitle>
+                                <PortfolioListSubTitle> {portfolioList.description} </PortfolioListSubTitle>
+                            </PortfolioListItemAlign>
+                            <PortfolioListItemAlign>
+                                {portfolioList && portfolioList.PortfolioItems.map((item, index) => (
+                                    <PortfolioTable number={item.id} name={item.name} progress={item.progress} key={`role_${index}`}/>
+                                ))}
+                            </PortfolioListItemAlign>
+                        </PortfolioDetail>
 
-                            <PortfolioListButton>
-                                <LinkButton
-                                    delay={400}
-                                    icon="send"
-                                    sending={false}
-                                    loading={false}
-                                    href={`/portfolio/${id}/${title}`}
-                                    status={'entering'}>
-
-                                    Перейти
-                                </LinkButton>
-                            </PortfolioListButton>
-                        </PortfolioListItem>
-                    </PortfolioListContent>
-
+                        <PortfolioListButton>
+                            <LinkButton
+                                delay={400}
+                                icon="send"
+                                sending={false}
+                                loading={false}
+                                href={`/portfolioList/${portfolioList.id}/${portfolioList.title}`}
+                                status={'entering'}>
+                                Перейти
+                            </LinkButton>
+                        </PortfolioListButton>
+                    </PortfolioListItem>
+                </PortfolioListContent>
             </React.Fragment>
         )
     }
@@ -170,4 +171,4 @@ export const PortfolioListSubTitle = styled.span`
 `;
 
 
-export default PortfolioList;
+export default  PortfolioList;
