@@ -3,10 +3,10 @@ import { delay } from 'redux-saga';
 import actionTypes, {getPortfolioSuccess, failedPortfolio, getPortfolioIdSuccess} from "./portfolio.action";
 import {Api} from "./Api";
 
-function* getPortfolioList() {
+function* getPortfolioList(params) {
     try {
-        const result = yield Api.getPortfolioList();
-        yield put(getPortfolioSuccess({payload: {result}}));
+        const result = yield Api.getPortfolioList(params.payload);
+        yield put(getPortfolioSuccess(result));
     } catch (e) {
         yield put(failedPortfolio(e));
     }

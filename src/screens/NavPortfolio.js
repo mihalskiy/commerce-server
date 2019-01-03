@@ -41,7 +41,7 @@ let NavPortfolio = ({ title, description, url, src }) => (
                                 lineWidth="25" // String: Defines the thickness of the circle's stroke.
                                 progress="35" // String: Update to change the progress and percentage.
                                 progressColor="rgb(76, 154, 255)" // String: Color of "progress" portion of circle.
-                                bgColor="#535761" // String: Color of "empty" portion of circle.
+                                bgImage="#535761" // String: Color of "empty" portion of circle.
                                 textColor="#6b778c" // String: Color of percentage text color.
                                 textStyle={{
                                     font: 'bold 4rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
@@ -62,7 +62,7 @@ let NavPortfolio = ({ title, description, url, src }) => (
                                 lineWidth="25" // String: Defines the thickness of the circle's stroke.
                                 progress="35" // String: Update to change the progress and percentage.
                                 progressColor="rgb(76, 154, 255)" // String: Color of "progress" portion of circle.
-                                bgColor="#535761" // String: Color of "empty" portion of circle.
+                                bgImage="#535761" // String: Color of "empty" portion of circle.
                                 textColor="#6b778c" // String: Color of percentage text color.
                                 textStyle={{
                                     font: 'bold 4rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
@@ -83,7 +83,7 @@ let NavPortfolio = ({ title, description, url, src }) => (
                                 lineWidth="25" // String: Defines the thickness of the circle's stroke.
                                 progress="35" // String: Update to change the progress and percentage.
                                 progressColor="rgb(76, 154, 255)" // String: Color of "progress" portion of circle.
-                                bgColor="#535761" // String: Color of "empty" portion of circle.
+                                bgImage="#535761" // String: Color of "empty" portion of circle.
                                 textColor="#6b778c" // String: Color of percentage text color.
                                 textStyle={{
                                     font: 'bold 4rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.

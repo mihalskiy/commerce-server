@@ -8,7 +8,7 @@ const initialState = {
         loading: false
     },
     portfolio: {
-        loading: false
+        loading: true
     }
 };
 

@@ -77,8 +77,8 @@ class SinglePortfolio extends Component {
           { portfolio && !loading &&
           <ProjectContainer>
             <ProjectBackground
-                srcSet={`${portfolio.result.bgColor} 1000w, ${portfolio.result.bgColor} 1920w`}
-                placeholder={portfolio.result.bgColor}
+                srcSet={`${portfolio.result.bgImage} 1000w, ${portfolio.result.bgImage} 1920w`}
+                placeholder={portfolio.result.bgImage}
                 opacity={0.8}
                 entered={!prerender}
             />
@@ -88,7 +88,7 @@ class SinglePortfolio extends Component {
                 url="https://www.best.edu.au/s/q2yjjvl7?data=8%404!9%4020303!10%40-15087&version=1"
                 roles={roles}
             />
-            {portfolio && !loading && portfolio.result.PortfolioItems.map((list, index) => (
+            {portfolio && !loading && portfolio.payload.result.PortfolioItems.map((list, index) => (
                 <ProjectSection>
                   <ProjectSectionColumns>
                     <SidebarImagesText>
@@ -103,8 +103,8 @@ class SinglePortfolio extends Component {
                           sizes={`(max-width: ${Media.mobile}) 200px, 343px`}
                       />
                       <SidebarImage
-                          srcSet={`${portfolio.result.bgColor} 300w, ${portfolio.result.bgColor} 700w`}
-                          placeholder={portfolio.result.bgColor}
+                          srcSet={`${portfolio.result.bgImage} 300w, ${portfolio.result.bgImage} 700w`}
+                          placeholder={portfolio.result.bgImage}
                           alt="Multiple user annotations on a shared layer."
                           sizes={`(max-width: ${Media.mobile}) 200px, 343px`}
                       />

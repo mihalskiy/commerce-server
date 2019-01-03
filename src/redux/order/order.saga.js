@@ -4,10 +4,9 @@ import { Api } from './Api';
 
 function* addOrderSaga(payload) {
     const result = yield Api.insertNewOrder(payload);
-    debugger
     try {
 
-        if (result != undefined) {
+        if (result !== undefined) {
             yield put(fetchSuccessAction(result.ok));
         } else {
             yield put(fetchFailedAction(true));

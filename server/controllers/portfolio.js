@@ -1,6 +1,8 @@
 const portfolio = require('../models').Portfolio;
 const portfolioItem = require('../models').PortfolioItem;
 const senderMail = require('../mail/mail.service').mail;
+const sequelize = require('sequelize');
+const _ = require('lodash');
 
 
 module.exports = {
@@ -19,35 +21,56 @@ module.exports = {
     },*/
 
     list(req, res) {
-        console.log('REQ.PARAMS.ID', req.query.type);
         let limit = 10;   // number of records per page
         let offset = 0;
+        const {page, type} = req.query;
 
-        portfolio.findAndCountAll({
-
+        portfolio.findAll({
+            attributes: [
+                'type',
+                [sequelize.fn('COUNT', sequelize.col('type')), 'count'],
+            ],
+            group: 'type',
+            raw: true,
+            logging: true
         })
-            .then((data) => {
-                const {page, type} = req.query;
-                const pages = Math.ceil(data.count / limit);
-                offset = limit * (page ? page : 1 - 1);
+            .then((typeCount) => {
+                const count =  _.filter(typeCount, o => {
+                    return o.type == 'lending' || o.type == 'store' || o.type == 'business_card';
 
-                portfolio.findAll({
-                    include: [{
-                        all: true,
-                        nested: true,
-                        model: portfolioItem
-                    }],
+                });
+                portfolio.findAndCountAll({
                     where: {
-                        type: type || 'lending',
+                        type: type,
 
-                    },
-                    limit: limit,
-                    offset: offset,
-                    $sort: { id: 1 }
+                    }
                 })
-                    .then((users) => {
-                        res.status(200).json({'result': users, 'count': data.count, 'pages': pages});
-                    });
+                .then((data) => {
+                        const pages = Math.ceil(data.count / limit);
+                        offset = limit * (page - 1);
+
+                        portfolio.findAll({
+                            include: [{
+                                all: true,
+                                nested: true,
+                                model: portfolioItem
+                            }],
+                            where: {
+                                type: type,
+                            },
+                            limit: limit,
+                            offset: offset,
+                            $sort: { id: 1 }
+                        })
+                        .then((users) => {
+                            res.status(200).json({
+                                'result': users,
+                                'count': data.count,
+                                'pages': pages,
+                                'count_type': count
+                            });
+                        });
+                    })
             })
             .catch(function (error) {
                 res.status(500).send('Internal Server Error');

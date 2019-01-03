@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      bgColor: {
+      bgImage: {
         type: Sequelize.STRING
       },
       title: {

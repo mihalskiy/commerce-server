@@ -5,7 +5,7 @@ import ScrollToTop from '../utils/ScrollToTop';
 import Footer from '../components/Footer';
 import NavPortfolio from './NavPortfolio';
 import PortfolioList from './PortfolioList';
-import SinglePortfolio from './SinglePortfolio'
+import Pagination from '../components/Pagination'
 import styled from 'styled-components';
 import {
     ProjectContainer, ProjectSection, ProjectSectionContent, ProjectBackground} from '../components/Project';
@@ -24,6 +24,7 @@ const description = 'Лучше всего о нашем качестве и н�
 const mapDispatchToProps = dispatch => bindActionCreators({
     getPortfolioList,
     getPortfolioSuccess
+
 }, dispatch);
 
 
@@ -31,10 +32,13 @@ class Portfolio extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            page: 1,
+            type: 'lending',
+            paging: '',
+            portfolio: []
         };
-        this.props.getPortfolioList();
 
-
+        this.props.getPortfolioList(this.state)
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -46,24 +50,21 @@ class Portfolio extends Component {
         return null;
     }
 
+    pageHandler = (offset) =>{
+        this.setState(({ paging }) => ({
+            paging: { ...paging, offset: offset },
+            page: offset
+        }));
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // If we have a snapshot value, we've just added new items.
-        // Adjust scroll so these new items don't push the old ones out of view.
-        // (snapshot here is the value returned from getSnapshotBeforeUpdate)
-        if (snapshot !== undefined) {
-            //debugger
-        }
+        this.props.getPortfolioList(this.state)
+
+
+
     }
-
     render() {
 
-        const {status, loading, portfolio} = this.props;
-
-        if (portfolio) {
-
-        }
-
+        const {status, loading, portfolio, totalPages} = this.props;
+        const {page} = this.state
         return (
             <React.Fragment>
                 <ScrollToTop status={status}/>
@@ -71,46 +72,42 @@ class Portfolio extends Component {
                     <title>{`Создания веб сайтов под ключ | ${title}`}</title>
                     <meta name="description" content={description}/>
                 </Helmet>
-                    {!loading &&
-                            <ProjectContainer status={status} delay={50}>
-                                <ProjectBackground
-                                    srcSet={`${backgroundSpr} 1000w, ${backgroundSprLarge} 1920w`}
-                                    placeholder={backgroundSprPlaceholder}
-                                    entered={!prerender}/>
-                                <NavPortfolio
-                                    title={title}
-                                    description={description}
-                                    url="/contact"
-                                    src={backgroundSprPlaceholder}/>
-                                <ProjectSection>
-                                    <ProjectSectionContent>
-                                        <ProjectSectionPortfolio>
-                                            {portfolio && !loading && portfolio.payload.result.map((list, index) => (
-                                                <PortfolioList
-                                                    id={list.id}
-                                                    bg={list.bgColor}
-                                                    title={list.title}
-                                                    description={list.description}
-                                                    list={list.PortfolioItems}
-                                                    key={`role_${index}`}/>
-                                            ))
-                                            }
+                { portfolio && !loading &&
+                <ProjectContainer status={status} delay={50}>
+                    <ProjectBackground
+                    srcSet={`${backgroundSpr} 1000w, ${backgroundSprLarge} 1920w`}
+                    placeholder={backgroundSprPlaceholder}
+                    entered={!prerender}/>
+                    <NavPortfolio
+                    title={title}
+                    description={description}
+                    url="/contact"
+                    src={backgroundSprPlaceholder}/>
 
-                                        </ProjectSectionPortfolio>
-                                    </ProjectSectionContent>
+                    <ProjectSection>
+                    <ProjectSectionContent>
+                    <ProjectSectionPortfolio>
+                        {portfolio.data && portfolio.data.result.map((item, index) => (
+                            <PortfolioList
+                                portfolioList={item}
+                                key={`role_${index}`}
+                            />
+                        )) }
 
-                                </ProjectSection>
-                                <ProjectSection>
-                                    {/*<ProjectSectionHeading>Full project coming soon...</ProjectSectionHeading>*/}
-                                </ProjectSection>
-                            </ProjectContainer>
-                        }
-                {loading &&
-                <Loader
-                    size={'300px'}
-                    color={'rgba(51,234,255,1)'}
-                />
+
+                    <Pagination
+                        pageHandler = {this.pageHandler}
+                        totalPages = {portfolio.data.pages}
+                        currentPage={page}
+                    />
+
+                    </ProjectSectionPortfolio>
+                    </ProjectSectionContent>
+                    </ProjectSection>
+                </ProjectContainer>
+
                 }
+
                 <Footer/>
             </React.Fragment>
         )
@@ -120,9 +117,9 @@ class Portfolio extends Component {
 const mapStateToProps = function (state) {
 
     return {
-        portfolio: state.portfolio.portfolioList,
-        loading: state.portfolio.loading
-
+        portfolio: state.portfolio.payload,
+        loading: state.portfolio.loading,
+        totalPages: state.portfolio.payload
     }
 }
 
