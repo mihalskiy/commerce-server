@@ -31,11 +31,7 @@ const app = express()
     ]
 });
 
-<<<<<<< HEAD
-fs.writeFileSync("./public/sitemap.xml", sitemap.toString());
-=======
 fs.writeFileSync("./build/sitemap.xml", sitemap.toString());
->>>>>>> 70f9a30be6738bf6a431c14498dc9e7b68124027
 
 
 app.get('/sitemap.xml', function(req, res) {
@@ -85,14 +81,13 @@ require('./server/auth/auth')(app);
 require('./server/routes/router')(app);
 app.use(express.static(path.join(__dirname + '/build')))
 
-// sends index.html
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/build/index.html'))
 })
-/*app.get('*', (req, res) => res.status(200).send({
+app.get('*', (req, res) => res.status(200).send({
     message: 'Welcome to the beginning of nothingness.',
-}));*/
-/*function ensureSecure(req, res, next){
+}));
+function ensureSecure(req, res, next){
     if(req.secure){
         // OK, continue
         return next();
@@ -100,6 +95,6 @@ app.use('*', (req, res) => {
     // handle port numbers if you need non defaults
     // res.redirect('https://' + req.host + req.url);
     res.redirect('https://' + req.hostname + req.url);
-}*/
+}
 
 module.exports = app;
