@@ -8,8 +8,4 @@ RUN npm install nodemon -g -qy
 RUN npm install -qy
 COPY  . .
 RUN npm run build
-<<<<<<< HEAD
-=======
-
->>>>>>> 6fb93a91fbea32812f7a7fec3e0239f3fea97979
 EXPOSE 8080

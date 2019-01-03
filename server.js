@@ -30,7 +30,7 @@ const app = express()
     ]
 });
 
-fs.writeFileSync("./build/public/sitemap.xml", sitemap.toString());
+fs.writeFileSync("./public/sitemap.xml", sitemap.toString());
 
 
 app.get('/sitemap.xml', function(req, res) {
