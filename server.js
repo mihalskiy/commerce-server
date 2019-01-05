@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const path = require('path');
 const sm = require('sitemap')
     , fs = require('fs');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
@@ -30,6 +31,8 @@ const app = express()
         { url: '/news/',   img: "nurmaget.com" }
     ]
 });
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === 'production') {
 
