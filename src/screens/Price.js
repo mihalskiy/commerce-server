@@ -9,30 +9,45 @@ import backgroundSpr from '../assets/spr-background.jpg';
 import backgroundSprLarge from '../assets/spr-background-large.jpg';
 import backgroundSprPlaceholder from '../assets/spr-background-placeholder.jpg';
 import {bindActionCreators} from "redux";
-import { getTableSuccess} from "../redux/table/table.action";
+import {getTable, getTableSuccess} from "../redux/table/table.action";
 const prerender = window.location.port === '45678';
 
 
 const title = 'АКТУАЛЬНЫЕ ЦЕНЫ';
 const description = 'Наши цены — адекватные и умеренные. Все оплаты мы разбиваем на 3 этапа, это удобно и доступно. Вы можете получить очень качественный сайт на основе готового решения, с уникальным дизайном по цене от 13000 грн.';
+
 const roles = [
-  'Простой',
-  'Стандарт',
-  'Лучший',
+    {
+        simple: 'Простой'
+    },
+    {
+        standard: 'Стандарт'
+    },
+    {
+        best: 'Лучший'
+    }
 ];
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    getTable,
     getTableSuccess
 
 }, dispatch);
 
 
-class ProjectSPR extends Component {
+class Price extends Component {
+
+    componentWillMount() {
+        this.props.getTable({
+            type: Object.keys(roles[0]),
+            activeIndex: 0
+        });
+    }
     render () {
-        const {priceInfo} = this.props;
+        const {tableInfo, status, activeIndex} = this.props;
         return (
             <React.Fragment>
-                <ScrollToTop status={this.props.status} />
+                <ScrollToTop status={status} />
                 <Helmet>
                     <title>{`Создания веб сайтов под ключ | ${title}`}</title>
                     <meta name="description" content={description} />
@@ -43,23 +58,25 @@ class ProjectSPR extends Component {
                         placeholder={backgroundSprPlaceholder}
                         entered={!prerender}
                     />
-                    <ProjectHeader
-                        title={title}
-                        description={description}
-                        url="/contact"
-                        roles={roles}
-                    />
+                        <ProjectHeader
+                            title={title}
+                            description={description}
+                            activeIndex={activeIndex}
+                            roles={roles}
+                        />
+
                     <ProjectSection>
                         <ProjectSectionContent>
-                            {priceInfo &&
+
+                            {tableInfo &&
                                 <ProjectPriceTable
 
-                                    name={priceInfo}
-                                    currency={priceInfo}
-                                    price={priceInfo}
-                                    cent={priceInfo}
-                                    title={'sdgfsdg'}
-                                    fields={roles}
+                                    name={tableInfo}
+                                    currency={tableInfo}
+                                    price={tableInfo}
+                                    cent={tableInfo}
+                                    title={tableInfo}
+                                    fields={tableInfo.fields}
                                 />
                             }
 
@@ -75,10 +92,12 @@ class ProjectSPR extends Component {
 };
 
 const mapStateToProps = function (state) {
+    debugger
+
     return {
-        tableName: state.table.tableName,
-        priceInfo: state.table.priceInfo
+        tableInfo: state.table.table,
+        activeIndex: state.table.activeIndex
     }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProjectSPR);
+export default connect(mapStateToProps,mapDispatchToProps)(Price);

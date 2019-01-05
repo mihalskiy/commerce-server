@@ -9,6 +9,7 @@ const arr = [	// TODO: define new sagas here
     {
         name: 'Простой',
         price: '29',
+        type: 'simple',
         cent: '99',
         currency: '$',
         title: 'bla',
@@ -16,6 +17,18 @@ const arr = [	// TODO: define new sagas here
             {
                 id: 1,
                 name: 'adgfgrwg'
+            },
+            {
+                id: 1,
+                name: 'sryhtjtu'
+            },
+            {
+                id: 1,
+                name: 'ertyrutio'
+            },
+            {
+                id: 1,
+                name: 'rtyui'
             }
         ]
     },
@@ -23,23 +36,70 @@ const arr = [	// TODO: define new sagas here
         name: 'Стандарт',
         price: '99',
         cent: '59',
+        type: 'standard',
         currency: '$',
-        title: 'xaxaxax'
+        title: 'xaxaxax',
+        fields: [
+            {
+                id: 1,
+                name: 'adgfrtrygrwg'
+            },
+            {
+                id: 1,
+                name: 'sryhtjtu'
+            },
+            {
+                id: 1,
+                name: 'ertyrutio'
+            },
+            {
+                id: 1,
+                name: 'rtyui'
+            }
+        ]
     },
     {
         name: 'Лучший',
         price: '15',
         cent: '45',
+        type: 'best',
         currency: '$',
-        title: 'magic'
+        title: 'magic',
+        fields: [
+            {
+                id: 1,
+                name: 'adgfdsfrtdhygrwg'
+            },
+            {
+                id: 1,
+                name: 'sryhtjtu'
+            },
+            {
+                id: 1,
+                name: 'ertyrutio'
+            },
+            {
+                id: 1,
+                name: 'rtyui'
+            }
+        ]
     }
 ];
 
-function* getTableSaga({payload: {tableName}}) {
+
+
+function* getTableSaga(params) {
+    const {activeIndex, type} = params.payload;
+    debugger
     const table = arr.find((el)=>{
-        return el.name === tableName
+        debugger
+        return el.type === type[0]
     });
-    yield put(getTableSuccess(table));
+    debugger
+    yield put(getTableSuccess({
+        table: table,
+        activeIndex: activeIndex ? activeIndex : 0,
+    }));
 }
 
 function* actionWatcher() {

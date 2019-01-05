@@ -6,7 +6,12 @@ import {Api} from "./Api";
 function* getPortfolioList(params) {
     try {
         const result = yield Api.getPortfolioList(params.payload);
-        yield put(getPortfolioSuccess(result));
+        if (result) {
+            yield put(getPortfolioSuccess({
+                success: true,
+                result
+            }));
+        }
     } catch (e) {
         yield put(failedPortfolio(e));
     }

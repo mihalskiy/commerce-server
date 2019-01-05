@@ -15,6 +15,7 @@ import backgroundSprPlaceholder from '../assets/project-large.png';
 import {bindActionCreators} from "redux";
 import {getPortfolioList, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
 import Loader from '../components/Loader'
+import ProjectHeader from '../components/ProjectHeader'
 const prerender = window.location.port === '45678';
 
 
@@ -26,6 +27,17 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     getPortfolioSuccess
 
 }, dispatch);
+const roles = [
+    {
+        lending: 'Лендинг'
+    },
+    {
+        store: 'Интернет магазин'
+    },
+    {
+        business_card: 'Сайт Визитка'
+    }
+];
 
 
 class Portfolio extends Component {
@@ -34,8 +46,7 @@ class Portfolio extends Component {
         this.state = {
             page: 1,
             type: 'lending',
-            paging: '',
-            portfolio: []
+            activeIndex: 0
         };
 
         this.props.getPortfolioList(this.state)
@@ -63,7 +74,8 @@ class Portfolio extends Component {
     }
     render() {
 
-        const {status, loading, portfolio, totalPages} = this.props;
+        const {status, loading, portfolio} = this.props;
+        debugger
         const {page} = this.state
         return (
             <React.Fragment>
@@ -78,16 +90,17 @@ class Portfolio extends Component {
                     srcSet={`${backgroundSpr} 1000w, ${backgroundSprLarge} 1920w`}
                     placeholder={backgroundSprPlaceholder}
                     entered={!prerender}/>
-                    <NavPortfolio
-                    title={title}
-                    description={description}
-                    url="/contact"
-                    src={backgroundSprPlaceholder}/>
+                    <ProjectHeader
+                        title={title}
+                        description={description}
+                        activeIndex={portfolio.result.activeIndex}
+                        roles={roles}
+                    />
 
                     <ProjectSection>
                     <ProjectSectionContent>
                     <ProjectSectionPortfolio>
-                        {portfolio.data && portfolio.data.result.map((item, index) => (
+                        {portfolio.result.data && portfolio.result.data.result.map((item, index) => (
                             <PortfolioList
                                 portfolioList={item}
                                 key={`role_${index}`}
@@ -97,18 +110,23 @@ class Portfolio extends Component {
 
                     <Pagination
                         pageHandler = {this.pageHandler}
-                        totalPages = {portfolio.data.pages}
+                        totalPages = {portfolio.result.data.pages}
                         currentPage={page}
+                        success={portfolio.result.success}
+                        loading={loading}
                     />
 
                     </ProjectSectionPortfolio>
                     </ProjectSectionContent>
                     </ProjectSection>
+                    <Footer/>
                 </ProjectContainer>
+
+
 
                 }
 
-                <Footer/>
+
             </React.Fragment>
         )
     }

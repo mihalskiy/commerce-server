@@ -1,4 +1,4 @@
-const apiInsertNewOrder =  'https://nurmaget.com' + '/api/orders';
+const apiInsertNewOrder =  process.env.PUBLIC_URL + '/api/orders';
 
 
 //send POST request to add new Order

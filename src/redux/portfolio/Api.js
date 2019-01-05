@@ -1,9 +1,10 @@
-const apiInsertNewOrder =  'https://nurmaget.com' + '/api/portfolio';
+const apiInsertNewOrder =  process.env.PUBLIC_URL + '/api/portfolio';
 
 async function getPortfolioList(params) {
     try {
 
-        const {page, type} = params;
+        const {page, type, activeIndex} = params;
+        debugger
         let response = await fetch(apiInsertNewOrder + '?page=' + page + '&type=' + type, {
             method: 'GET',
             crossDomain: true,
@@ -13,6 +14,7 @@ async function getPortfolioList(params) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
+
         })
         .then((res) => {
             return res.json();
@@ -24,7 +26,9 @@ async function getPortfolioList(params) {
         return await {
             data: response,
             page: page,
-            type: type
+            type: type,
+            activeIndex: activeIndex ? activeIndex : 0,
+
         }
 
     } catch (error) {

@@ -4,6 +4,8 @@ import {bindActionCreators} from "redux";
 import {ProjectHeaderInner, ProjectDetails, ProjectTitle,ProjectMeta, ProjectMetaItem, ProjectDescription, ProjectHeaderContainer} from "./Project";
 import {getTable, getTableSuccess} from '../redux/table/table.action';
 import { connect } from 'react-redux';
+import {getPortfolioList} from '../redux/portfolio/portfolio.action';
+
 
 
 
@@ -11,56 +13,46 @@ const prerender = window.location.port === '45678';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getTable,
-    getTableSuccess
+    getPortfolioList
 
 }, dispatch);
 
 class ProjectHeader extends Component {
-
-    constructor(props) {
-        super(props);
-        //this.handleClick = this.handleClick.bind(this)
-        this.state = {
-            active: false
-        }
-    }
-
-    handleClick(index, props, e) {
-        this.props.getTable(e.currentTarget.dataset.value);
-        this.setState({
+    handleClick(role, index) {
+        debugger
+        this.props.getTable({
+            type: Object.keys(role),
             activeIndex: index
         });
+        this.props.getPortfolioList({
+            type: Object.keys(role),
+            page: 1,
+            activeIndex: index
+        })
     }
-
-    componentWillMount() {
-        this.props.getTable(this.props.roles[0]);
-        this.setState({
-            activeIndex: 0
-        });
-    }
-
 
     render () {
+        const {roles, url, description, title, activeIndex} = this.props;
         return(
             <ProjectHeaderContainer>
                 <ProjectHeaderInner>
                     <ProjectDetails entered={!prerender}>
-                        <ProjectTitle>{this.props.title}</ProjectTitle>
-                        <ProjectDescription>{this.props.description}</ProjectDescription>
+                        <ProjectTitle>{title}</ProjectTitle>
+                        <ProjectDescription>{description}</ProjectDescription>
                         <LinkButton
                             secondary
                             style={{paddingLeft: '3px'}}
                             icon="chevronRight"
-                            href={this.props.url}
+                            href={url}
                             rel="noopener noreferrer"
                         >
                             Заказать
                         </LinkButton>
                     </ProjectDetails>
                     <ProjectMeta entered={!prerender}>
-                        {this.props.roles && this.props.roles.map((role, index) => (
+                        {roles && roles.map((role, index) => (
 
-                            <ProjectMetaItem className={this.state.activeIndex === index ? 'active' : ''} onClick={this.handleClick.bind(this, index, this.props)} data-value={role} key={`role_${index}`}>{role}</ProjectMetaItem>
+                            <ProjectMetaItem className={activeIndex === index ? 'active' : ''} onClick={this.handleClick.bind(this, role, index)} data-value={Object.values(role)} key={`role_${index}`}>{Object.values(role)}</ProjectMetaItem>
                         ))}
                     </ProjectMeta>
                 </ProjectHeaderInner>

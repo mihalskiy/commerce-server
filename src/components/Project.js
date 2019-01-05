@@ -59,7 +59,7 @@ export class ProjectBackground extends React.Component {
 
 
 
-export const ProjectPriceTable = ({ name= {}, currency = {}, price = {}, cent = {}, title = {}, fields }) => (
+export const ProjectPriceTable = ({ name= {}, currency = {}, price = {}, cent = {}, title = {}, fields=[] }) => (
     <ProjectTable>
             <ProjectDetails entered={!prerender}>
                 <ProjectTableName>{name.name}</ProjectTableName>
@@ -71,7 +71,7 @@ export const ProjectPriceTable = ({ name= {}, currency = {}, price = {}, cent = 
                     <div>
                         <ProjectTableContent>
                             {fields && fields.map((field, index) => (
-                                <ProjectTableList key={`role_${index}`}>{field}</ProjectTableList>
+                                <ProjectTableList key={`role_${index}`}>{field.name}</ProjectTableList>
                             ))}
                         </ProjectTableContent>
                     </div>

@@ -7,7 +7,7 @@ import {
     Switch
 } from 'react-router-dom';
 import Home from '../screens/Home'
-import ProjectSPR from '../screens/ProjectSPR'
+import ProjectSPR from '../screens/Price'
 import Contact from '../screens/Contact'
 import Portfolio from '../screens/Portfolio'
 import SinglePortfolio from '../screens/SinglePortfolio'

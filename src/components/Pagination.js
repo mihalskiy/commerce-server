@@ -55,6 +55,8 @@ const initDelay = 300;
                                     {status => (
                                         <PaginationButton
                                             id={number}
+                                            sending={this.props.loading}
+                                            loading={this.props.loading}
                                             status={status}
                                             onClick={this.pagingHandler}
                                             active={number == currentPage}

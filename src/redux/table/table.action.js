@@ -16,20 +16,16 @@ export const getTablePending = () => {
     return { type: 'GET_TABLE_PENDING' }
 };
 
-export const  getTable = (tableName) => {
+export const  getTable = (payload) => {
     return {
         type: GET_TABLE,
-        payload: {
-            tableName: tableName
-        }
+        payload
     }
 }
 
 export const getTableSuccess = (payload) => {
     return {
         type: GET_TABLE_SUCCESS,
-        payload: {
-            priceInfo: payload
-        }
+        payload
     }
 };
