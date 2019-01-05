@@ -31,20 +31,23 @@ const app = express()
     ]
 });
 
-fs.writeFileSync("./build/sitemap.xml", sitemap.toString());
+if (process.env.NODE_ENV === 'production') {
 
+    fs.writeFileSync("./build/sitemap.xml", sitemap.toString());
 
-app.get('/sitemap.xml', function(req, res) {
-    sitemap.toXML( function (err, xml) {
-        if (err) {
-            return res.status(500).end();
-        }
-        res.header('Content-Type', 'application/xml');
-        res.send( xml );
+    app.get('/sitemap.xml', function(req, res) {
+        sitemap.toXML( function (err, xml) {
+            if (err) {
+                return res.status(500).end();
+            }
+            res.header('Content-Type', 'application/xml');
+            res.send( xml );
+        });
     });
-});
 
-//app.all('*', ensureSecure);
+
+    app.all('*', ensureSecure);
+}
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", process.env.PUBLIC_URL);
@@ -84,9 +87,7 @@ app.use(express.static(path.join(__dirname + '/build')))
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/build/index.html'))
 })
-app.get('*', (req, res) => res.status(200).send({
-    message: 'Welcome to the beginning of nothingness.',
-}));
+
 function ensureSecure(req, res, next){
     if(req.secure){
         // OK, continue
