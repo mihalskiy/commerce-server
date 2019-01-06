@@ -3,12 +3,19 @@ const Spacing = {
   spacingOuter: {
     desktop: '60px',
     tablet: '40px',
-    mobile: '60px',
+    mobile: '10px',
+  },
+  navIcon: {
+    desktop: '60px',
+    tablet: '40px',
+    mobile: '10px',
+    userRight: '10px',
+    menuRight: '50px'
   },
   userSelect: {
     desktop: '60px',
     tablet: '40px',
-    mobile: '60px',
+    mobile: '10px',
     right: '10px'
   }
 }

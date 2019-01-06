@@ -112,19 +112,19 @@ const HeaderWrapper = styled.header`
   padding: 0;
   width: 45px;
   z-index: 1024;
-  top: ${props => props.theme.spacingOuter.desktop};
-  left: ${props => props.theme.spacingOuter.desktop};
-  bottom: ${props => props.theme.spacingOuter.desktop};
+  top: ${props => props.theme.navIcon.desktop};
+  left: ${props => props.theme.navIcon.desktop};
+  bottom: ${props => props.theme.navIcon.desktop};
 
   @media (max-width: ${Media.tablet}) {
-    top: ${props => props.theme.spacingOuter.tablet};
-    left: ${props => props.theme.spacingOuter.tablet};
-    bottom: ${props => props.theme.spacingOuter.tablet};
+    top: ${props => props.theme.navIcon.tablet};
+    left: ${props => props.theme.navIcon.tablet};
+    bottom: ${props => props.theme.navIcon.tablet};
   }
 
   @media (max-width: ${Media.mobile}), (max-height: ${Media.mobile}) {
-    top: ${props => props.theme.spacingOuter.mobile};
-    left: ${props => props.theme.spacingOuter.mobile};
+    top: ${props => props.theme.navIcon.mobile};
+    left: ${props => props.theme.navIcon.mobile};
     bottom: auto;
   }
 `;

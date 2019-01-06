@@ -4,7 +4,6 @@ async function getPortfolioList(params) {
     try {
 
         const {page, type, activeIndex} = params;
-        debugger
         let response = await fetch(apiInsertNewOrder + '?page=' + page + '&type=' + type, {
             method: 'GET',
             crossDomain: true,

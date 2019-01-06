@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import {LinkButton, ProjectHeaderButton} from '../components/Button'
 import styled from 'styled-components';
-import {bindActionCreators} from "redux";
-import {getPortfolioIdSuccess, getPortfolioList} from "../redux/portfolio/portfolio.action";
 import {connect} from "react-redux";
 import Loader from "./Portfolio";
+import { Media } from '../utils/StyleUtils';
+
 
 const theme = {
     main: "https://picsum.photos/1920/1020",
@@ -14,11 +14,13 @@ const theme = {
 
 let PortfolioTable = ({number, name, progress}) => (
     <PortfolioTableContent>
-        <PortfolioTableNum>{number}</PortfolioTableNum>
-        <PortfolioTableTitle>{name}</PortfolioTableTitle>
+        <PortfolioTableProgressAlign>
+            <PortfolioTableNum>{number}</PortfolioTableNum>
+            <PortfolioTableTitle>{name}</PortfolioTableTitle>
+        </PortfolioTableProgressAlign>
         <PortfolioTableProgressAlign>
             <PortfolioTableProgress>
-                <PortfolioTableProgressItem theme={{progress: progress ? progress : theme.progress + '%'}} />
+                <PortfolioTableProgressItem theme={{progress: progress ? progress + '%' : theme.progress + '%'}} />
             </PortfolioTableProgress>
             <PortfolioTableNum>{progress}%</PortfolioTableNum>
         </PortfolioTableProgressAlign>
@@ -71,15 +73,23 @@ export const PortfolioTableProgressAlign = styled.div`
   &:first-of-type {
   margin-right: 10px;
   }
+  
+  @media (max-width: ${Media.mobile}) {
+     width: 100%;
+     margin-top: 10px;
+  }
 `;
 export const PortfolioListItemAlign = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding-right: 10px;
 `;
 
 
 export const PortfolioTableProgress = styled.div`
-  width: 80px;
+  width: 100%;
+  min-width: 80px;
   height: 5px;
   background: rgb(54, 63, 78);
   position: relative;
@@ -108,6 +118,9 @@ export const PortfolioTableContent = styled.div`
   justify-content: space-between;
   align-items: baseline;
   padding: 10px 0;
+  @media (max-width: ${Media.mobile}) {
+     flex-direction: column;
+  }
 `;
 
 const PortfolioDetail = styled.div`
@@ -116,6 +129,12 @@ const PortfolioDetail = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
+   @media (max-width: ${Media.mobile}) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 `
 
 export const PortfolioListContent = styled.div`
@@ -147,6 +166,9 @@ export const PortfolioListItem = styled.div`
   flex-direction: column;
   padding: 10px 25px;
   position: relative;
+  @media (max-width: ${Media.mobile}) {
+     padding: 10px;
+  }
 `;
 
 const PortfolioListButton = styled.div`

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Icon} from '../utils/Icon';
+import { Media } from '../utils/StyleUtils';
 
 const EnterPage = ({ onClick, formOpen }) => (
     <UserButton aria-label="Menu" onClick={onClick}>
@@ -17,8 +18,8 @@ const UserButton = styled.button`
   padding: 0;
   margin: 0;
   position: fixed;
-  top: ${props => props.theme.userSelect.mobile};
-  right: ${props => props.theme.userSelect.right};
+  top: ${props => props.theme.navIcon.mobile};
+  right: ${props => props.theme.navIcon.userRight};
   margin: 0;
   display: block;
   width: 48px;
@@ -32,6 +33,18 @@ const UserButton = styled.button`
   &:active {
     background: ${props => props.theme.colorBlack(0.2)};
     outline: none;
+  }
+  
+  @media (max-width: ${Media.tablet}) {
+    display: block;
+    top: ${props => props.theme.navIcon.tablet};
+    right: ${props => props.theme.navIcon.userRight};
+  }
+
+  @media (max-width: ${Media.mobile}) {
+    display: block;
+    top: ${props => props.theme.navIcon.mobile};
+    right: ${props => props.theme.navIcon.userRight};
   }
 `;
 

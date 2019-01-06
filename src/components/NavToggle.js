@@ -18,8 +18,8 @@ const NavToggleButton = styled.button`
   padding: 0;
   margin: 0;
   position: fixed;
-  top: ${props => props.theme.spacingOuter.mobile};
-  right: ${props => props.theme.spacingOuter.mobile};
+  top: ${props => props.theme.navIcon.desktop};
+  right: ${props => props.theme.navIcon.menuRight};
   display: none;
   width: 48px;
   height: 48px;
@@ -33,9 +33,17 @@ const NavToggleButton = styled.button`
     background: ${props => props.theme.colorBlack(0.2)};
     outline: none;
   }
-
-  @media (max-width: ${Media.mobile}), (max-height: ${Media.mobile}) {
+  
+  @media (max-width: ${Media.tablet}) {
     display: block;
+    top: ${props => props.theme.navIcon.tablet};
+    right: ${props => props.theme.navIcon.menuRight};
+  }
+
+  @media (max-width: ${Media.mobile}) {
+    display: block;
+    top: ${props => props.theme.navIcon.mobile};
+    right: ${props => props.theme.navIcon.menuRight};
   }
 `;
 
