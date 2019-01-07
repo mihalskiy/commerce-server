@@ -10,10 +10,12 @@ export const Media = {
   numdesktopSM: 1200,
   numTablet: 1024,
   numMobile: 698,
+  smMobile: 360,
   get desktop() { return `${this.numDesktop}px` },
   get desktopSM() { return `${this.numdesktopSM}px` },
   get tablet() { return `${this.numTablet}px` },
   get mobile() { return `${this.numMobile}px` },
+  get mobileSm() { return `${this.smMobile}px` },
   get mobileLS() { return `(max-width: 820px) and (max-height: 420px)` },
 }
 

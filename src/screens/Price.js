@@ -61,7 +61,7 @@ class Price extends Component {
                         <ProjectHeader
                             title={title}
                             description={description}
-                            activeIndex={activeIndex}
+                            typeIndex={activeIndex}
                             roles={roles}
                         />
 

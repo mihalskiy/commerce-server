@@ -126,6 +126,11 @@ export const ProjectSection = styled.section`
     padding-left: ${props => props.theme.spacingOuter.mobile};
     padding-right: ${props => props.theme.spacingOuter.mobile};
   }
+  
+  @media (max-width: ${Media.mobileSm}), (max-height: ${Media.mobileSm}) {
+    padding-left: ${props => props.theme.spacingOuter.mobileSm};
+    padding-right: ${props => props.theme.spacingOuter.mobileSm};
+  }
 
   @media ${Media.mobileLS} {
     padding-left: 100px;

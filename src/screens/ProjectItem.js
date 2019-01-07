@@ -196,6 +196,10 @@ const ProjectItemSection = styled.section`
     padding-right: ${props => props.theme.spacingOuter.mobile};
     padding-left: ${props => props.theme.spacingOuter.mobile};
   }
+  @media (max-width: ${Media.mobileSm}) {
+    padding-right: ${props => props.theme.spacingOuter.mobileSm};
+    padding-left: ${props => props.theme.spacingOuter.mobileSm};
+  }
 `;
 
 const ProjectItemPreview = styled.div`

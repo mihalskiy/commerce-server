@@ -12,10 +12,10 @@ const HeaderIcons = ({ toggleMenu }) => (
     <HeaderNavIconLink
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Twitter"
-      href="https://twitter.com/hamishMW"
+      aria-label="facebook"
+      href="https://www.facebook.com/nurmaget/"
     >
-      <HeaderNavIcon icon="twitter" />
+      <HeaderNavIcon icon="facebook" />
     </HeaderNavIconLink>
     <HeaderNavIconLink
       target="_blank"

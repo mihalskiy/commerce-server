@@ -18,7 +18,7 @@ const UserButton = styled.button`
   padding: 0;
   margin: 0;
   position: fixed;
-  top: ${props => props.theme.navIcon.mobile};
+  top: ${props => props.theme.navIcon.desktop};
   right: ${props => props.theme.navIcon.userRight};
   margin: 0;
   display: block;
@@ -35,13 +35,13 @@ const UserButton = styled.button`
     outline: none;
   }
   
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${Media.tablet}), (max-height: ${Media.tablet}) {
     display: block;
     top: ${props => props.theme.navIcon.tablet};
     right: ${props => props.theme.navIcon.userRight};
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${Media.mobile}), (max-height: ${Media.mobile}) {
     display: block;
     top: ${props => props.theme.navIcon.mobile};
     right: ${props => props.theme.navIcon.userRight};

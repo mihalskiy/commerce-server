@@ -4,6 +4,7 @@ const Spacing = {
     desktop: '60px',
     tablet: '40px',
     mobile: '60px',
+    mobileSm: '10px',
   },
   navIcon: {
     desktop: '60px',

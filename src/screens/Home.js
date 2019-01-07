@@ -171,7 +171,7 @@ export default class Home extends Component {
           index="01"
           title="ПРИМЕРЫ НАШИХ РАБОТ"
           description="За время своей работы мы разработали более 600 лендингов работающих во всех странах мира и генерирующих своим заказчикам тысячи обращений в сутки. Большинство клиентов заказали у нас по несколько лендингов на каждое направление своего бизнеса"
-          buttonText="Посмотреть все роботы"
+          buttonText="Посмотреть роботы"
           buttonTo="/portfolio"
           imageSrc={[`${sprProject} 980w, ${sprProjectLarge} 1376w`]}
           imageAlt={['Smart Sparrow lesson builder']}

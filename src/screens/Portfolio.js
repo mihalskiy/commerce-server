@@ -117,9 +117,13 @@ class Portfolio extends Component {
                     </ProjectSection>
                     <Footer/>
                 </ProjectContainer>
+                }
 
-
-
+                { loading &&
+                    <Loader
+                        size={'250px'}
+                        color={'rgba(51,234,255,1)'}
+                    />
                 }
 
 

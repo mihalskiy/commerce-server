@@ -34,13 +34,13 @@ const NavToggleButton = styled.button`
     outline: none;
   }
   
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${Media.tablet}), (max-height: ${Media.tablet}) {
     display: block;
     top: ${props => props.theme.navIcon.tablet};
     right: ${props => props.theme.navIcon.menuRight};
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${Media.mobile}), (max-height: ${Media.mobile}) {
     display: block;
     top: ${props => props.theme.navIcon.mobile};
     right: ${props => props.theme.navIcon.menuRight};
