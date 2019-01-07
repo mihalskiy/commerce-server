@@ -294,9 +294,10 @@ export const ProjectMeta = styled.ul`
 `;
 
 export const ProjectMetaItem = styled.li`
-  padding: 30px 0;
+  padding: 15px 0;
   font-size: 16px;
   font-weight: 400;
+  cursor: pointer;
   border-top: 1px solid ${props => props.theme.colorText(0.2)};
 
   &:last-child {

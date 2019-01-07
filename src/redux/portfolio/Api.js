@@ -3,7 +3,8 @@ const apiInsertNewOrder =  process.env.PUBLIC_URL + '/api/portfolio';
 async function getPortfolioList(params) {
     try {
 
-        const {page, type, activeIndex} = params;
+        const {page, type, paginationIndex, typeIndex} = params;
+        debugger
         let response = await fetch(apiInsertNewOrder + '?page=' + page + '&type=' + type, {
             method: 'GET',
             crossDomain: true,
@@ -26,7 +27,8 @@ async function getPortfolioList(params) {
             data: response,
             page: page,
             type: type,
-            activeIndex: activeIndex ? activeIndex : 0,
+            paginationIndex: paginationIndex ? paginationIndex : 1,
+            typeIndex: typeIndex ? typeIndex : 0,
 
         }
 

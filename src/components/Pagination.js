@@ -40,7 +40,7 @@ const initDelay = 300;
                             onClick={currentPage >1 && this.backHandler}
                             disabled={currentPage < 1}
                             type="text">
-                            preview
+                            &lt;
                         </PaginationButton>
                     )}
                 </Transition>
@@ -59,7 +59,7 @@ const initDelay = 300;
                                             loading={this.props.loading}
                                             status={status}
                                             onClick={this.pagingHandler}
-                                            active={number == currentPage}
+                                            className={number === currentPage ? 'active' : ''}
                                             value={number}
                                             hasValue={!!number}
                                             type="number">
@@ -80,7 +80,7 @@ const initDelay = 300;
                             delay={400}
                             onClick={currentPage <= totalPages -4 && this.nextHandler}
                             type="text">
-                            next
+                            &gt;
                         </PaginationButton>
                     )}
                 </Transition>
@@ -120,7 +120,7 @@ const PaginationItem = styled.div`
     flex-direction: row;
 `;
 
-const PaginationButton = styled(ProjectHeaderButton)`
+const PaginationButton = styled.button`
   margin-top: 20px;
   transition-property: transform, opacity;
   transition-timing-function: ${props => props.theme.curveFastoutSlowin};
@@ -129,6 +129,24 @@ const PaginationButton = styled(ProjectHeaderButton)`
   transform: translate3d(0, 80px, 0);
   opacity: 1;
   margin-right: 5px;
+  background: rgba(51,234,255,1);;
+  border: 0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: #111111;
+  z-index: 1024;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  
+  &:hover {
+    background: rgb(5, 215, 239);;
+  }
+  &.active {
+        background: rgba(0,229,255,0.4);
+      }
 
   ${props => props.sending && `
     svg {

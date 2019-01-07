@@ -61,20 +61,25 @@ class Portfolio extends Component {
     }
 
     pageHandler = (offset) =>{
-        this.setState(({ paging }) => ({
+       /* this.setState(({ paging }) => ({
             paging: { ...paging, offset: offset },
             page: offset
-        }));
+        }));*/
 
-        this.props.getPortfolioList(this.state)
-
+        this.props.getPortfolioList({
+            paginationIndex: offset,
+            page: 1,
+            type: this.props.portfolio.result.type,
+            typeIndex: this.props.portfolio.result.typeIndex
+        })
+        debugger
 
 
     }
     render() {
 
         const {status, loading, portfolio} = this.props;
-        const {page} = this.state
+        debugger
         return (
             <React.Fragment>
                 <ScrollToTop status={status}/>
@@ -91,7 +96,7 @@ class Portfolio extends Component {
                     <ProjectHeader
                         title={title}
                         description={description}
-                        activeIndex={portfolio.result.activeIndex}
+                        typeIndex={portfolio.result.typeIndex}
                         roles={roles}
                     />
 
@@ -109,7 +114,7 @@ class Portfolio extends Component {
                     <Pagination
                         pageHandler = {this.pageHandler}
                         totalPages = {portfolio.result.data.pages}
-                        currentPage={page}
+                        currentPage={portfolio.result.paginationIndex}
                         success={portfolio.result.success}
                         loading={loading}
                     />

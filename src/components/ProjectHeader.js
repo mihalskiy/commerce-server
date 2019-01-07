@@ -22,17 +22,18 @@ class ProjectHeader extends Component {
         debugger
         this.props.getTable({
             type: Object.keys(role),
-            activeIndex: index
+            typeIndex: index
         });
         this.props.getPortfolioList({
             type: Object.keys(role),
             page: 1,
-            activeIndex: index
+            typeIndex: index
         })
     }
 
     render () {
-        const {roles, url, description, title, activeIndex} = this.props;
+        const {roles, url, description, title, typeIndex} = this.props;
+        debugger
         return(
             <ProjectHeaderContainer>
                 <ProjectHeaderInner>
@@ -52,7 +53,7 @@ class ProjectHeader extends Component {
                     <ProjectMeta entered={!prerender}>
                         {roles && roles.map((role, index) => (
 
-                            <ProjectMetaItem className={activeIndex === index ? 'active' : ''} onClick={this.handleClick.bind(this, role, index)} data-value={Object.values(role)} key={`role_${index}`}>{Object.values(role)}</ProjectMetaItem>
+                            <ProjectMetaItem className={typeIndex === index ? 'active' : ''} onClick={this.handleClick.bind(this, role, index)} data-value={Object.values(role)} key={`role_${index}`}>{Object.values(role)}</ProjectMetaItem>
                         ))}
                     </ProjectMeta>
                 </ProjectHeaderInner>

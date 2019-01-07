@@ -150,7 +150,7 @@ export const PortfolioListContent = styled.div`
   background-size: cover;
   width: 100%;
   min-height: 300px;
-  margin: 40px 15px 15px 0;
+  margin: 0 15px 15px 0;
 `;
 
 export const PortfolioListItem = styled.div`
