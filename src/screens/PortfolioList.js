@@ -54,7 +54,8 @@ class PortfolioList extends React.Component {
                                 icon="send"
                                 sending={false}
                                 loading={false}
-                                href={`/portfolioList/${portfolioList.id}/${portfolioList.title}`}
+                                target={'_blank'}
+                                href={`/portfolio/${portfolioList.id}/${portfolioList.title}`}
                                 status={'entering'}>
                                 Перейти
                             </LinkButton>

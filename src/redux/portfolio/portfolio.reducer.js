@@ -21,8 +21,9 @@ function reducer(state = INITIAL_STATE, action = {}) {
                 ...payload
             });
         case PortfolioAction.GET_PORTFOLIO_ID_SUCCESS :
+            debugger
             return state.merge({
-                loading: true,
+                loading: false,
                 ...payload
             });
         case PortfolioAction.GET_PORTFOLIOS_SUCCESS :

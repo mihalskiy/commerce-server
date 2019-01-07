@@ -90,12 +90,9 @@ const arr = [	// TODO: define new sagas here
 
 function* getTableSaga(params) {
     const {activeIndex, type} = params.payload;
-    debugger
     const table = arr.find((el)=>{
-        debugger
         return el.type === type[0]
     });
-    debugger
     yield put(getTableSuccess({
         table: table,
         activeIndex: activeIndex ? activeIndex : 0,

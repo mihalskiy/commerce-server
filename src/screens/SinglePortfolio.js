@@ -10,31 +10,11 @@ import {
 } from '../components/Project';
 import ProjectHeader from '../components/ProjectHeader'
 import { Media } from '../utils/StyleUtils';
-import sliceBackground from '../assets/slice-background.jpg';
-import sliceBackgroundLarge from '../assets/slice-background-large.jpg';
-import sliceBackgroundPlaceholder from '../assets/slice-background-placeholder.jpg';
-import sliceApp from '../assets/slice-app.jpg';
-import sliceAppLarge from '../assets/slice-app-large.jpg';
-import sliceAppPlaceholder from '../assets/slice-app-placeholder.jpg';
-import sliceSidebarLayers from '../assets/slice-sidebar-layers.png';
-import sliceSidebarLayersLarge from '../assets/slice-sidebar-layers-large.png';
 import sliceSidebarLayersPlaceholder from '../assets/slice-sidebar-layers-placeholder.png';
-import sliceSidebarAnnotations from '../assets/slice-sidebar-annotations.png';
-import sliceSidebarAnnotationsLarge from '../assets/slice-sidebar-annotations-large.png';
-import sliceSidebarAnnotationsPlaceholder from '../assets/slice-sidebar-annotations-placeholder.png';
-import sliceSlides from '../assets/slice-slides.jpg';
-import sliceSlidesLarge from '../assets/slice-slides-large.jpg';
-import sliceSlidesPlaceholder from '../assets/slice-slides-placeholder.jpg';
-import sliceBackgroundBar from '../assets/slice-background-bar.jpg';
-import sliceBackgroundBarLarge from '../assets/slice-background-bar-large.jpg';
-import sliceBackgroundBarPlaceholder from '../assets/slice-background-bar-placeholder.jpg';
-import sliceAnnotation from '../assets/slice-annotation.png';
-import sliceAnnotationLarge from '../assets/slice-annotation-large.png';
-import sliceAnnotationPlaceholder from '../assets/slice-annotation-placeholder.png';
 import {bindActionCreators} from "redux";
 import {getPortfolioById, getPortfolioIdSuccess} from "../redux/portfolio/portfolio.action";
 import {connect} from "react-redux";
-import Loader from "./Portfolio";
+import Loader from "../components/Loader";
 
 const prerender = window.location.port === '45678';
 
@@ -64,27 +44,27 @@ class SinglePortfolio extends Component {
 
   render() {
     const {status, portfolio, loading} = this.props;
-
+      debugger
     return(
         <React.Fragment>
           <ScrollToTop status={status} />
           {portfolio &&
           <Helmet>
-            <title>{`Создания веб сайтов под ключ | ${portfolio.result.title}`}</title>
-            <meta name="description" content={portfolio.result.description}/>
+            <title>{`Создания веб сайтов под ключ | ${portfolio.payload.result.title}`}</title>
+            <meta name="description" content={portfolio.payload.result.description}/>
           </Helmet>
           }
           { portfolio && !loading &&
           <ProjectContainer>
             <ProjectBackground
-                srcSet={`${portfolio.result.bgImage} 1000w, ${portfolio.result.bgImage} 1920w`}
-                placeholder={portfolio.result.bgImage}
+                srcSet={`${portfolio.payload.result.bgImage} 1000w, ${portfolio.payload.result.bgImage} 1920w`}
+                placeholder={portfolio.payload.result.bgImage}
                 opacity={0.8}
                 entered={!prerender}
             />
             <ProjectHeader
-                title={portfolio.result.title}
-                description={portfolio.result.description}
+                title={portfolio.payload.result.title}
+                description={portfolio.payload.result.description}
                 url="https://www.best.edu.au/s/q2yjjvl7?data=8%404!9%4020303!10%40-15087&version=1"
                 roles={roles}
             />
@@ -103,8 +83,8 @@ class SinglePortfolio extends Component {
                           sizes={`(max-width: ${Media.mobile}) 200px, 343px`}
                       />
                       <SidebarImage
-                          srcSet={`${portfolio.result.bgImage} 300w, ${portfolio.result.bgImage} 700w`}
-                          placeholder={portfolio.result.bgImage}
+                          srcSet={`${portfolio.payload.result.bgImage} 300w, ${portfolio.payload.result.bgImage} 700w`}
+                          placeholder={portfolio.payload.result.bgImage}
                           alt="Multiple user annotations on a shared layer."
                           sizes={`(max-width: ${Media.mobile}) 200px, 343px`}
                       />
@@ -242,7 +222,6 @@ const SidebarImage = styled(ProgressiveImage)`
 `;
 
 const mapStateToProps = function (state) {
-  debugger
   return {
     portfolio: state.portfolio.payload,
     loading: state.portfolio.loading

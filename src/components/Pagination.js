@@ -20,13 +20,11 @@ const initDelay = 300;
      nextHandler = () => {
          let active = this.props.currentPage;
          this.props.pageHandler(active + 1);
-         debugger
      };
 
      backHandler = () => {
          let active = this.props.currentPage;
          this.props.pageHandler(active - 1);
-         debugger
      };
     renderPageNumbers = (pageNumbers, totalPages) => {
         let { currentPage } = this.props;

@@ -92,8 +92,6 @@ class Price extends Component {
 };
 
 const mapStateToProps = function (state) {
-    debugger
-
     return {
         tableInfo: state.table.table,
         activeIndex: state.table.activeIndex

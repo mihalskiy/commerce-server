@@ -37,6 +37,7 @@ export const  getPortfolioById = (id) => {
 export const getPortfolioSuccess = (payload) => {
     return {
         type: GET_PORTFOLIOS_SUCCESS,
+        loading: false,
          payload: {
              payload
          }
@@ -46,7 +47,10 @@ export const getPortfolioSuccess = (payload) => {
 export const getPortfolioIdSuccess = (payload) => {
     return {
         type: GET_PORTFOLIO_ID_SUCCESS,
-        payload
+        payload: {
+            payload
+        },
+        loading: false
     }
 };
 

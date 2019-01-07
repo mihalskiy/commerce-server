@@ -21,7 +21,6 @@ function* getPortfolioList(params) {
 function* getPortfolioById({payload: {id}}) {
     try {
         const result = yield Api.getPortfolioById(id);
-        debugger
         yield put(getPortfolioIdSuccess({payload: {result}}));
     } catch (e) {
         yield put(failedPortfolio(e));

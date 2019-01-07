@@ -72,9 +72,6 @@ class Portfolio extends Component {
             type: this.props.portfolio.result.type,
             typeIndex: this.props.portfolio.result.typeIndex
         })
-        debugger
-
-
     }
     render() {
 

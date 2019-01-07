@@ -19,7 +19,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 class ProjectHeader extends Component {
     handleClick(role, index) {
-        debugger
         this.props.getTable({
             type: Object.keys(role),
             typeIndex: index
@@ -33,7 +32,6 @@ class ProjectHeader extends Component {
 
     render () {
         const {roles, url, description, title, typeIndex} = this.props;
-        debugger
         return(
             <ProjectHeaderContainer>
                 <ProjectHeaderInner>
