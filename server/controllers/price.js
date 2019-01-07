@@ -1,4 +1,4 @@
-const price = require('../models').Price;
+const Price = require('../models').Price;
 const priceItem = require('../models').priceItem;
 const sequelize = require('sequelize');
 const _ = require('lodash');
@@ -8,7 +8,8 @@ module.exports = {
 
     list(req, res) {
         const {type} = req.query;
-        price.findAll({
+        return Price
+            .findAll({
             include: [{
                 all: true,
                 nested: true,

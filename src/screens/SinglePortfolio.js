@@ -44,7 +44,6 @@ class SinglePortfolio extends Component {
 
   render() {
     const {status, portfolio, loading} = this.props;
-      debugger
     return(
         <React.Fragment>
           <ScrollToTop status={status} />

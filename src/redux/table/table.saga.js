@@ -89,13 +89,13 @@ const arr = [	// TODO: define new sagas here
 
 
 function* getTableSaga(params) {
-    const {activeIndex, type} = params.payload;
+    const {typeIndex, type} = params.payload;
     const table = arr.find((el)=>{
         return el.type === type[0]
     });
     yield put(getTableSuccess({
         table: table,
-        activeIndex: activeIndex ? activeIndex : 0,
+        typeIndex: typeIndex ? typeIndex : 0,
     }));
 }
 

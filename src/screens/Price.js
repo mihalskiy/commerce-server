@@ -40,11 +40,11 @@ class Price extends Component {
     componentWillMount() {
         this.props.getTable({
             type: Object.keys(roles[0]),
-            activeIndex: 0
+            typeIndex: 0
         });
     }
     render () {
-        const {tableInfo, status, activeIndex} = this.props;
+        const {tableInfo, status, typeIndex} = this.props;
         return (
             <React.Fragment>
                 <ScrollToTop status={status} />
@@ -61,7 +61,7 @@ class Price extends Component {
                         <ProjectHeader
                             title={title}
                             description={description}
-                            typeIndex={activeIndex}
+                            typeIndex={typeIndex}
                             roles={roles}
                         />
 
@@ -94,7 +94,7 @@ class Price extends Component {
 const mapStateToProps = function (state) {
     return {
         tableInfo: state.table.table,
-        activeIndex: state.table.activeIndex
+        typeIndex: state.table.typeIndex
     }
 };
 

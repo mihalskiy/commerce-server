@@ -32,7 +32,6 @@ class ProjectHeader extends Component {
 
     render () {
         const {roles, url, description, title, typeIndex} = this.props;
-        debugger
         return(
             <ProjectHeaderContainer>
                 <ProjectHeaderInner>
