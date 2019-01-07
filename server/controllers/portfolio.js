@@ -62,9 +62,9 @@ module.exports = {
                             offset: offset,
                             $sort: { id: 1 }
                         })
-                        .then((users) => {
+                        .then((portfolio) => {
                             res.status(200).json({
-                                'result': users,
+                                'result': portfolio,
                                 'count': data.count,
                                 'pages': pages,
                                 'count_type': count

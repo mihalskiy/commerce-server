@@ -1,5 +1,6 @@
 const ordersController = require('../controllers').orders;
 const portfolioController = require('../controllers').portfolio;
+const priceController = require('../controllers').price;
 require('dotenv').config();
 
 module.exports = (app) => {
@@ -16,12 +17,5 @@ module.exports = (app) => {
   app.get('/api/portfolio', portfolioController.list);
   app.get('/api/portfolio/:id', portfolioController.retrieveById);
 
-  /*app.post('/api/todos/:todoId/items', orderItemsController.create);
-  app.put('/api/todos/:todoId/items/:todoItemId', orderItemsController.update);
-  app.delete(
-    '/api/todos/:todoId/items/:todoItemId', orderItemsController.destroy
-  );
-  app.all('/api/todos/:todoId/items', (req, res) => res.status(405).send({
-    message: 'Method Not Allowed',
-  }));*/
+  app.get('/api/price', priceController.list);
 };

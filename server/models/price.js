@@ -3,10 +3,14 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     currency: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    title: DataTypes.STRING
+    title: DataTypes.STRING,
+    type:  DataTypes.STRING,
   }, {});
   price.associate = function(models) {
-    // associations can be defined here
+    price.hasMany(models.priceItem, {
+      foreignKey: 'priceId',
+      as: 'priceItem',
+    });
   };
   return price;
 };
