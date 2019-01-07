@@ -6,6 +6,8 @@ import {
     BrowserRouter,
     Switch
 } from 'react-router-dom';
+import { Media } from '../utils/StyleUtils';
+
 import Home from '../screens/Home'
 import ProjectSPR from '../screens/Price'
 import Contact from '../screens/Contact'
@@ -94,10 +96,13 @@ class App extends Component {
                             </Helmet>
                             <GlobalStyles />
                             <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
-                            <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
-                            <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
-                            <AuthForm toggleMenu={this.toggleMenu} formOpen={formOpen} />
-                            <EnterPage onClick={this.toggleForm} formOpen={formOpen} />
+                            <TopItem>
+                                <Header toggleMenu={this.toggleMenu} menuOpen={menuOpen} />
+                                <NavToggle onClick={this.toggleMenu} menuOpen={menuOpen} />
+                                <AuthForm toggleMenu={this.toggleMenu} formOpen={formOpen} />
+                                <EnterPage onClick={this.toggleForm} formOpen={formOpen} />
+                            </TopItem>
+
                             <TransitionGroup component={React.Fragment} >
                                 <Transition
                                     key={location.pathname}
@@ -216,6 +221,20 @@ const MainContent = styled.main`
     opacity: 1;
   `}
 `;
+
+const TopItem = styled.div`
+@media (max-width: ${Media.tablet}) {
+    background: #000;
+    opacity: 0.89;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    z-index: 100;
+  }
+
+`
 
 const SkipToMain = styled.a`
   position: fixed;

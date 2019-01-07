@@ -7,7 +7,7 @@ const Spacing = {
   },
   navIcon: {
     desktop: '60px',
-    tablet: '40px',
+    tablet: '20px',
     mobile: '10px',
     userRight: '10px',
     menuRight: '50px'

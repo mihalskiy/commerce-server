@@ -138,20 +138,21 @@ const HeaderLogo = styled(Link)`
     opacity: 0;
     transform: scale3d(1, 0, 1);
     transform-origin: top;
+    z-index: 3000;
     transition:
-      transform 0.4s ${props => props.theme.curveFastoutSlowin},
-      opacity 0.1s ease 0.4s;
+      transform 0.1s ${props => props.theme.curveFastoutSlowin},
   }
 
   &:hover g rect,
   &:focus g rect,
   &:active g rect {
     opacity: 1;
+    z-index: 3000;
     transform: scale3d(1, 1, 1);
     transform-origin: bottom;
     transition:
-      transform 0.4s ${props => props.theme.curveFastoutSlowin},
-      opacity 0.1s ease;
+      transform 0.1s ${props => props.theme.curveFastoutSlowin},
+      opacity 0.3s ease;
   }
 `;
 
