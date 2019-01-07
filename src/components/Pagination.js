@@ -36,7 +36,7 @@ const initDelay = 300;
                             status={status}
                             delay={400}
                             onClick={currentPage >1 && this.backHandler}
-                            disabled={currentPage < 1}
+                            disabled={currentPage < 5}
                             type="text">
                             &lt;
                         </PaginationButton>
@@ -112,7 +112,7 @@ const Container= styled.div `
 `;
 
 const PaginationItem = styled.div`
-    padding: 20px;
+
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -144,19 +144,13 @@ const PaginationButton = styled.button`
   }
   &.active {
         background: rgba(0,229,255,0.4);
-      }
+  }
+  
+  
 
-  ${props => props.sending && `
-    svg {
-      transition: transform ${props.curveFastoutSlowin}, opacity 0.3s ease 0.8s;
-      transition-duration: 0.8s;
-      transform: translate3d(150px, 0, 0);
-      opacity: 0;
-    }
-
-    div {
-      opacity: 0;
-    }
+  ${props => props.disabled && `
+    cursor: no-drop;
+    background: rgb(65, 133, 141);
   `}
 
   ${props => props.sending && css`

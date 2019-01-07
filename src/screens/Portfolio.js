@@ -10,7 +10,6 @@ import {
     ProjectContainer, ProjectSection, ProjectSectionContent, ProjectBackground} from '../components/Project';
 import backgroundSpr from '../assets/sky.jpg';
 import backgroundSprLarge from '../assets/sky.jpg';
-import backgroundSprPlaceholder from '../assets/project-large.png';
 import {bindActionCreators} from "redux";
 import {getPortfolioList, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
 import Loader from '../components/Loader'
@@ -76,7 +75,6 @@ class Portfolio extends Component {
     render() {
 
         const {status, loading, portfolio} = this.props;
-        debugger
         return (
             <React.Fragment>
                 <ScrollToTop status={status}/>
@@ -88,7 +86,7 @@ class Portfolio extends Component {
                 <ProjectContainer status={status} delay={50}>
                     <ProjectBackground
                     srcSet={`${backgroundSpr} 1000w, ${backgroundSprLarge} 1920w`}
-                    placeholder={backgroundSprPlaceholder}
+                    placeholder={backgroundSpr}
                     entered={!prerender}/>
                     <ProjectHeader
                         title={title}
@@ -107,16 +105,14 @@ class Portfolio extends Component {
                             />
                         )) }
 
-
-                    <Pagination
-                        pageHandler = {this.pageHandler}
-                        totalPages = {portfolio.result.data.pages}
-                        currentPage={portfolio.result.paginationIndex}
-                        success={portfolio.result.success}
-                        loading={loading}
-                    />
-
                     </ProjectSectionPortfolio>
+                        <Pagination
+                            pageHandler = {this.pageHandler}
+                            totalPages = {portfolio.result.data.pages}
+                            currentPage={portfolio.result.paginationIndex}
+                            success={portfolio.result.success}
+                            loading={loading}
+                        />
                     </ProjectSectionContent>
                     </ProjectSection>
                     <Footer/>

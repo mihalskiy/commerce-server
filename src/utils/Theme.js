@@ -3,7 +3,7 @@ const Spacing = {
   spacingOuter: {
     desktop: '60px',
     tablet: '40px',
-    mobile: '10px',
+    mobile: '60px',
   },
   navIcon: {
     desktop: '60px',

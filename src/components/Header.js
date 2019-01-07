@@ -132,7 +132,6 @@ const HeaderWrapper = styled.header`
 const HeaderLogo = styled(Link)`
   display: flex;
   position: relative;
-  padding: 10px;
 
   g rect {
     opacity: 0;
