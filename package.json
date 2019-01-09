@@ -29,6 +29,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.8.2",
+    "@material-ui/icons": "^3.0.2",
     "@types/helmet": "0.0.37",
     "@types/morgan": "^1.7.35",
     "@types/sequelize": "^4.27.8",
@@ -64,6 +66,7 @@
     "react-router-sitemap": "^1.1.5",
     "react-router-sitemap-builder": "^1.1.1",
     "react-transition-group": "^2.5.0",
+    "recharts": "^1.4.2",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-devtools-extension": "^2.13.5",

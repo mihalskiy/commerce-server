@@ -50,15 +50,6 @@ class Portfolio extends Component {
         this.props.getPortfolioList(this.state)
     }
 
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        // Are we adding new items to the list?
-        // Capture the scroll position so we can adjust scroll later.
-        if (prevProps.loading) {
-            //debugger
-        }
-        return null;
-    }
-
     pageHandler = (offset) =>{
        /* this.setState(({ paging }) => ({
             paging: { ...paging, offset: offset },

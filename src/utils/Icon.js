@@ -23,7 +23,7 @@ export const Icon = ({ className, color, icon, size = 24 }) => {
       </svg>
     ),
       facebook: () => (
-    <svg lassName={className} fill={color || 'white'} width={size} height={size} viewBox="0 0 96.124 96.123">
+    <svg className={className} fill={color || 'white'} width={size} height={size} viewBox="0 0 96.124 96.123">
 	<path fill={color} d="M72.089,0.02L59.624,0C45.62,0,36.57,9.285,36.57,23.656v10.907H24.037c-1.083,0-1.96,0.878-1.96,1.961v15.803
 		c0,1.083,0.878,1.96,1.96,1.96h12.533v39.876c0,1.083,0.877,1.96,1.96,1.96h16.352c1.083,0,1.96-0.878,1.96-1.96V54.287h14.654
 		c1.083,0,1.96-0.877,1.96-1.96l0.006-15.803c0-0.52-0.207-1.018-0.574-1.386c-0.367-0.368-0.867-0.575-1.387-0.575H56.842v-9.246

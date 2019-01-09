@@ -7,11 +7,11 @@ import {
     Switch
 } from 'react-router-dom';
 import { Media } from '../utils/StyleUtils';
-
 import Home from '../screens/Home'
 import ProjectSPR from '../screens/Price'
 import Contact from '../screens/Contact'
 import Portfolio from '../screens/Portfolio'
+import DashBoard from '../components/Admin/DashBoard'
 import SinglePortfolio from '../screens/SinglePortfolio'
 import NotFound from '../screens/NotFound'
 import { Helmet } from "react-helmet";
@@ -145,6 +145,7 @@ class App extends Component {
                                                                                     <Route exact path="/" render={props => <Home {...props} status={status} />} />
                                                                                     <Route path="/contact" render={props => <Contact {...props} status={status} />} />
                                                                                     <Route path="/price" render={props => <ProjectSPR {...props} status={status} />} />
+                                                                                    <Route path="/dashboard" render={props => <DashBoard {...props} status={status} />} />
                                                                                     <Route exact path="/portfolio" render={props => <Portfolio {...props} status={status} />} />
                                                                                     <Route exact path="/portfolio/:id/:name" render={props => <SinglePortfolio {...props} status={status} />} />
                                                                                     <Route render={props => <NotFound {...props} status={status} />} />

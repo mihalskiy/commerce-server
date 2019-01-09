@@ -6,6 +6,7 @@ import { ProjectHeaderButton } from '../components/Button';
 import {getPortfolioList, getPortfolioIdSuccess} from "../redux/portfolio/portfolio.action";
 import {connect} from "react-redux";
 import { Transition } from 'react-transition-group';
+import PortfolioList from "../screens/Portfolio";
 const prerender = window.location.port === '45678';
 
 const initDelay = 300;
@@ -30,58 +31,42 @@ const initDelay = 300;
         let { currentPage } = this.props;
         return (
             <PaginationItem>
-                <Transition>
-                    {status => (
-                        <PaginationButton
-                            status={status}
-                            delay={400}
-                            onClick={currentPage >1 && this.backHandler}
-                            disabled={currentPage < 5}
-                            type="text">
-                            &lt;
-                        </PaginationButton>
-                    )}
-                </Transition>
-                {
-                    pageNumbers.map(number => {
+                <PaginationButton
+                    delay={400}
+                    onClick={currentPage >1 && this.backHandler}
+                    disabled={currentPage < 5}
+                    type="text">
+                    &lt;
+                </PaginationButton>
+                { pageNumbers.map((number, index) => {
                         if (
                             number >= parseInt(currentPage) - 3 &&
                             number <= parseInt(currentPage) + 3
                         ) {
                             return (
-                                <Transition>
-                                    {status => (
-                                        <PaginationButton
-                                            id={number}
-                                            sending={this.props.loading}
-                                            loading={this.props.loading}
-                                            status={status}
-                                            onClick={this.pagingHandler}
-                                            className={number === currentPage ? 'active' : ''}
-                                            value={number}
-                                            hasValue={!!number}
-                                            type="number">
-                                            {number}
-                                        </PaginationButton>
-                                    )}
-
-                                </Transition>
+                                <PaginationButton
+                                    id={number}
+                                    sending={this.props.loading}
+                                    loading={this.props.loading}
+                                    onClick={this.pagingHandler}
+                                    className={number === currentPage ? 'active' : ''}
+                                    value={number}
+                                    hasValue={!!number}
+                                    key={`role_${index}`}
+                                    type="number">
+                                    {number}
+                                </PaginationButton>
                             );
                         } else {
                             return null;
                         }
                     })}
-                <Transition>
-                    {status => (
-                        <PaginationButton
-                            status={status}
-                            delay={400}
-                            onClick={currentPage <= totalPages -4 && this.nextHandler}
-                            type="text">
-                            &gt;
-                        </PaginationButton>
-                    )}
-                </Transition>
+                    <PaginationButton
+                        delay={400}
+                        onClick={currentPage <= totalPages -4 && this.nextHandler}
+                        type="text">
+                        &gt;
+                    </PaginationButton>
             </PaginationItem>
         );   };
 
@@ -112,7 +97,6 @@ const Container= styled.div `
 `;
 
 const PaginationItem = styled.div`
-
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;

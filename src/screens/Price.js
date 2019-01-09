@@ -62,6 +62,7 @@ class Price extends Component {
                             title={title}
                             description={description}
                             typeIndex={typeIndex}
+                            url={"contact"}
                             roles={roles}
                         />
 
