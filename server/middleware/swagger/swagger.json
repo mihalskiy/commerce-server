@@ -1,0 +1,134 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Nurmaget doc api",
+    "description": "if you use this documentation, you will travel in New York on two week",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "nurmaget.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Portfolio",
+      "description": "API for nurmaget in the system"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/portfolio": {
+      "post": {
+        "tags": [
+          "portfolio"
+        ],
+        "description": "Create new portfolio in system",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New portfolio is created",
+            "schema": {
+              "$ref": "#/definitions/portfolio"
+            }
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "add type: lending or store",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "description": "add page number",
+            "type": "number"
+          }
+        ],
+        "tags": [
+          "portfolio"
+        ],
+        "summary": "Get all portfolio in system by type",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/portfolio"
+            }
+          }
+        }
+      }
+    },
+    "/portfolio/{portfolioId}": {
+      "parameters": [
+        {
+          "name": "portfolioId",
+          "in": "path",
+          "required": true,
+          "description": "ID of portfolio that we want to find",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "portfolio"
+        ],
+        "summary": "Get portfolio with given ID",
+        "responses": {
+          "200": {
+            "description": "portfolio is found",
+            "schema": {
+              "$ref": "#/definitions/portfolio"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Portfolios": {
+      "required": [
+        "title",
+        "type",
+        "bgImage",
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "bgImage": {
+          "type": "string"
+        }
+      }
+    },
+    "Orders": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    }
+  }
+}

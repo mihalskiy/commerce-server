@@ -6,6 +6,7 @@ const sm = require('sitemap')
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const initSwagger = require('./server/middleware/swagger/initSwagger');
 const passport = require('passport');
 const env = process.env.NODE_ENV;
 const db = require('./server/config/config')[env];
@@ -32,8 +33,6 @@ const app = express()
         { url: '/news/',   img: "nurmaget.com" }
     ]
 });
-
-console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 
 if (process.env.NODE_ENV === 'production') {
 
@@ -74,6 +73,7 @@ passport.deserializeUser((id, done) =>
         })
         .catch(done))
 app.use(bodyParser.urlencoded({ extended: false }));
+initSwagger(app);
 
 app.use(session({
     secret: 'keyboard cat',
