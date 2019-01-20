@@ -7,18 +7,62 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
+import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import SimpleLineChart from './SimpleLineChart';
-import SimpleTable from './SimpleTable';
-
+import { secondaryListItems } from './listItems';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PeopleIcon from '@material-ui/icons/People';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import LayersIcon from '@material-ui/icons/Layers';
+import Porfolios from './Portfolios'
+import Home from './Home';
+import { connect } from 'react-redux'
+import {bindActionCreators} from "redux";
+import {getPortfolioList, getPortfolioSuccess} from "../../redux/portfolio/portfolio.action";
+import {compose, withProps} from 'recompose'
 const drawerWidth = 240;
+
+const menu = [
+    {
+        id: 1,
+        title: 'Главная',
+        icon: (<DashboardIcon />)
+    },
+    {
+        id: 2,
+        title: 'Заказы',
+        icon: (<ShoppingCartIcon />)
+    },
+    {
+        id: 3,
+        title: 'Портфолио',
+        icon: (<BarChartIcon />)
+    },
+    {
+        id: 4,
+        title: 'Цены',
+        icon: (<LayersIcon />)
+    },
+    {
+        id: 5,
+        title: 'Новости',
+        icon: (<PeopleIcon />)
+    }];
+
+const divStyle = {
+    color: 'blue',
+    backgroundColor: '#ccc',
+};
 
 const styles = theme => ({
     root: {
@@ -97,11 +141,22 @@ const styles = theme => ({
     },
 });
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+    getPortfolioList,
+    getPortfolioSuccess
+
+}, dispatch);
+
 class Dashboard extends React.Component {
     state = {
         open: true,
-        type: ''
+        type: '',
+        activeIndex: 0
     };
+
+    UNSAFE_componentWillMount() {
+        this.props.getPortfolioList();
+    }
 
     handleDrawerOpen = () => {
         this.setState({ open: true });
@@ -111,15 +166,14 @@ class Dashboard extends React.Component {
         this.setState({ open: false });
     };
 
-    handleClick(e) {
+    handleClick(index) {
         this.setState({
-            type: e.target.innerHTML
+            activeIndex: index
         });
     }
 
     render() {
-        const { classes } = this.props;
-
+        const { classes, portfolio } = this.props;
         return (
             <div className={classes.root}>
                 <CssBaseline />
@@ -168,31 +222,48 @@ class Dashboard extends React.Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    <List onClick={this.handleClick.bind(this)}>{mainListItems}</List>
+                    <List>
+                        {menu.map((val, index) => (
+                            <ListItem
+                                key={index}
+                                tabindex={index}
+                                value={index}
+                                style={this.state.activeIndex === index ? divStyle : null}
+                                onClick={this.handleClick.bind(this, index)}
+                                button>
+                                <ListItemIcon>
+                                    {val.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={val.title}/>
+                            </ListItem>
+                        ))
+                        }
+                    </List>
                     <Divider />
                     <List>{secondaryListItems}</List>
                 </Drawer>
-                { this.state.type === 'Заказы' &&
-                            <h1>Заказы {this.state.type}</h1>
+                { this.state.activeIndex === 0 && portfolio &&
+
+                        <Porfolios portfolios={portfolio.payload.result} />
+                }
+                { this.state.activeIndex === 1 &&
+                <Home clases={classes} />
+                }
+                { this.state.activeIndex === 2 &&
+                    <Home clases={classes} />
                 }
 
-                <main className={classes.content}>
-                    <div className={classes.appBarSpacer} />
-                    <Typography variant="h4" gutterBottom component="h2">
-                        Orders
-                    </Typography>
-                    <Typography component="div" className={classes.chartContainer}>
-                        <SimpleLineChart />
-                    </Typography>
-                    <Typography variant="h4" gutterBottom component="h2">
-                        Products
-                    </Typography>
-                    <div className={classes.tableContainer}>
-                        <SimpleTable />
-                    </div>
-                </main>
+
             </div>
         );
+    }
+}
+
+const mapStateToProps = function (state) {
+    return {
+        portfolio: state.portfolio.payload,
+        loading: state.portfolio.loading,
+        totalPages: state.portfolio.payload
     }
 }
 
@@ -200,4 +271,7 @@ Dashboard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Dashboard);
+export default compose(
+    withStyles(styles),
+    connect(mapStateToProps,mapDispatchToProps)
+)(Dashboard);

@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 import {AnimFade} from '../utils/StyleUtils';
 import {bindActionCreators} from "redux";
 import { ProjectHeaderButton } from '../components/Button';
-import {getPortfolioList, getPortfolioIdSuccess} from "../redux/portfolio/portfolio.action";
+import {getPortfolioListByType, getPortfolioIdSuccess} from "../redux/portfolio/portfolio.action";
 import {connect} from "react-redux";
 import { Transition } from 'react-transition-group';
 import PortfolioList from "../screens/Portfolio";

@@ -3,14 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Portfolio = sequelize.define('Portfolio', {
     bgImage: DataTypes.STRING,
     title: DataTypes.STRING,
-    url: DataTypes.STRING,
     description: DataTypes.TEXT,
-    content: {
-      type: DataTypes.TEXT
-    },
+    content: DataTypes.TEXT,
+    url: DataTypes.TEXT,
     type: {
       type: DataTypes.TEXT
     },
+
   }, {});
   Portfolio.associate = function(models) {
     Portfolio.hasMany(models.PortfolioItem, {

@@ -4,6 +4,8 @@ const sequelize = require('sequelize');
 const _ = require('lodash');
 
 
+
+
 module.exports = {
 
     list(req, res) {
@@ -25,6 +27,22 @@ module.exports = {
         .catch(function (error) {
             res.status(500).send('Internal Server Error');
         });
+    },
+    upload(req, res) {
+        let uploadFile = req.files
+        const fileName = req.files
+        uploadFile.mv (
+            `${__dirname}/../public/files/${fileName}`,
+            function (err) {
+                if (err) {
+                    return res.status (500) .send (err)
+                }
+
+                res.json ({
+                    file:`public/${req.files.file.name}`,
+                })
+            },
+        )
     }
 };
 

@@ -20,7 +20,7 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },*/
 
-    list(req, res) {
+    listByType(req, res) {
         let limit = 10;   // number of records per page
         let offset = 0;
         const {page, type} = req.query;
@@ -95,6 +95,25 @@ module.exports = {
             })
             .catch((error) => res.status(400).send(error));
     },
+    list(req, res) {
+        return portfolio
+            .findAll({
+                include: [{
+                    all: true,
+                    nested: true,
+                    model: portfolioItem
+                }]
+            })
+            .then((data) => {
+                if (!data) {
+                    return res.status(404).send({
+                        message: 'Portfolio Not Found',
+                    });
+                }
+                return res.status(200).send(data);
+            })
+            .catch((error) => res.status(400).send(error));
+    }
 
     /*update(req, res) {
         return Todo

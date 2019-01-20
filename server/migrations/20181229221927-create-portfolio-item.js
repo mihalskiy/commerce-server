@@ -14,11 +14,6 @@ module.exports = {
       progress: {
         type: Sequelize.INTEGER
       },
-      title: Sequelize.STRING,
-      desktopImg: Sequelize.TEXT,
-      tabletImg: Sequelize.TEXT,
-      mobileImg: Sequelize.TEXT,
-      description: Sequelize.TEXT,
       portfolioId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

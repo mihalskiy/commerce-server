@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {ProjectHeaderInner, ProjectDetails, ProjectTitle,ProjectMeta, ProjectMetaItem, ProjectDescription, ProjectHeaderContainer} from "./Project";
 import {getTable, getTableSuccess} from '../redux/table/table.action';
 import { connect } from 'react-redux';
-import {getPortfolioList} from '../redux/portfolio/portfolio.action';
+import {getPortfolioListByType} from '../redux/portfolio/portfolio.action';
 
 
 
@@ -13,7 +13,7 @@ const prerender = window.location.port === '45678';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     getTable,
-    getPortfolioList
+    getPortfolioListByType
 
 }, dispatch);
 
@@ -23,7 +23,7 @@ class ProjectHeader extends Component {
             type: Object.keys(role),
             typeIndex: index
         });
-        this.props.getPortfolioList({
+        this.props.getPortfolioListByType({
             type: Object.keys(role),
             page: 1,
             typeIndex: index

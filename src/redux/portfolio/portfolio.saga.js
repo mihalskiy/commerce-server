@@ -1,11 +1,11 @@
 import { put, takeLatest, call, all } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import actionTypes, {getPortfolioSuccess, failedPortfolio, getPortfolioIdSuccess} from "./portfolio.action";
+import actionTypes, {getPortfolioSuccess, failedPortfolio, getPortfolioIdSuccess, getPortfolioList} from "./portfolio.action";
 import {Api} from "./Api";
 
-function* getPortfolioList(params) {
+function* getPortfolioListByType(params) {
     try {
-        const result = yield Api.getPortfolioList(params.payload);
+        const result = yield Api.getPortfolioListByType(params.payload);
         if (result) {
             yield put(getPortfolioSuccess({
                 success: true,
@@ -28,8 +28,19 @@ function* getPortfolioById({payload: {id}}) {
 
 }
 
+function* getPortfolios() {
+    try {
+        const result = yield Api.getPortfolioList();
+        yield put(getPortfolioSuccess({payload: {result}}));
+    } catch (e) {
+        yield put(failedPortfolio(e));
+    }
+
+}
+
 function* actionWatcher() {
-    yield takeLatest(actionTypes.GET_PORTFOLIOS, getPortfolioList);
+    yield takeLatest(actionTypes.GET_PORTFOLIOS_BY_TYPE, getPortfolioListByType);
+    yield takeLatest(actionTypes.GET_PORTFOLIOS, getPortfolios);
     yield takeLatest(actionTypes.GET_PORTFOLIO_ID, getPortfolioById);
 }
 

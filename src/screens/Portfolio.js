@@ -11,7 +11,7 @@ import {
 import backgroundSpr from '../assets/sky.jpg';
 import backgroundSprLarge from '../assets/sky.jpg';
 import {bindActionCreators} from "redux";
-import {getPortfolioList, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
+import {getPortfolioListByType, getPortfolioSuccess} from '../redux/portfolio/portfolio.action';
 import Loader from '../components/Loader'
 import ProjectHeader from '../components/ProjectHeader'
 const prerender = window.location.port === '45678';
@@ -21,7 +21,7 @@ const title = 'ПРИМЕРЫ НАШИХ РАБОТ';
 const description = 'Лучше всего о нашем качестве и надежности расскажет наше портфолио. Для каждого Заказчика мы стараемся подобрать оптимальную схему взаимоотношений, одинаково внимательно относясь как к крупным клиентам, так и к небольшим заказам. Наш Заказчик обращается к нам при следующей регистрации или перерегистрации, и это - наш главный показатель качества и конкурентноспособности.';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    getPortfolioList,
+    getPortfolioListByType,
     getPortfolioSuccess
 
 }, dispatch);
@@ -47,7 +47,7 @@ class Portfolio extends Component {
             activeIndex: 0
         };
 
-        this.props.getPortfolioList(this.state)
+        this.props.getPortfolioListByType(this.state)
     }
 
     pageHandler = (offset) =>{
@@ -56,7 +56,7 @@ class Portfolio extends Component {
             page: offset
         }));*/
 
-        this.props.getPortfolioList({
+        this.props.getPortfolioListByType({
             paginationIndex: offset,
             page: 1,
             type: this.props.portfolio.result.type,

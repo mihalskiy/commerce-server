@@ -10,7 +10,12 @@ export const INITIAL_STATE = Immutable(initialState.portfolio);
 function reducer(state = INITIAL_STATE, action = {}) {
     const { type = '', payload = {} } = action;
     switch (type) {
-        case PortfolioAction.GET_PORTFOLIOS :
+        case PortfolioAction.GET_PORTFOLIOS_BY_TYPE:
+            return state.merge({
+                loading: true,
+                ...payload
+            });
+        case PortfolioAction.GET_PORTFOLIOS:
             return state.merge({
                 loading: true,
                 ...payload
